@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Dentalis | سياسة الخصوصية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --bg: #F5F7FA;
+            --text: #1D1D1F;
+            --white: #FFFFFF;
+            --gray: #8E8E93;
+        }
+        [lang="en"] { font-family: 'Inter', sans-serif; }
+        [lang="ar"] { font-family: 'Cairo', sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 50px;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            left: 30px; /* Default for RTL */
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        [dir="ltr"] .lang-switch {
+            left: auto;
+            right: 30px;
+        }
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid #F0F0F0;
+            padding-bottom: 20px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: var(--text);
+            margin-top: 40px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+    
+    <h1 id="policy-title">سياسة الخصوصية لنظام Dentalis</h1>
+    
+    <div id="policy-content">
+        <p>تلتزم Dentalis بحماية خصوصية بياناتك وبيانات مرضاك. توضح هذه السياسة أنواع المعلومات التي نقوم بجمعها وكيفية استغلالنا لها.</p>
+
+        <h2>1. البيانات التي نجمعها</h2>
+        <p>عند استخدامك لبرنامج Dentalis، نقوم بجمع المعلومات الضرورية لتشغيل الخدمة، بما في ذلك: الاسم، البريد الإلكتروني، وبيانات العيادة. بالنسبة للمرضى، يتم تخزين السجلات الطبية بشكل مشفر.</p>
+
+        <h2>2. كيف نستخدم معلوماتك</h2>
+        <p>نستخدم البيانات لتوفير ميزات إدارة العيادة، وتحسين تجربة المستخدم، وضمان أمن العمليات والمزامنة بين الأجهزة الخاصة بك.</p>
+
+        <h2>3. مشاركة البيانات</h2>
+        <p>نحن لا نبيع أو نشارك بياناتك مع أطراف ثالثة لأغراض تسويقية. يتم استخدام البيانات فقط ضمن إطار خدمة Dentalis والوظائف التي تطلبها.</p>
+
+        <h2>4. أمن البيانات</h2>
+        <p>نستخدم تقنيات تشفير متطورة لحماية السجلات الطبية والمعلومات الشخصية، ونحرص على تطبيق معايير الأمان العالمية في خدماتنا السحابية.</p>
+
+        <h2>5. حقوقك</h2>
+        <p>لك الحق في الوصول إلى بياناتك، تعديلها، أو طلب حذفها في أي وقت عبر إعدادات الحساب أو بالتواصل معنا مباشرة.</p>
+    </div>
+
+    <a href="index.html" class="back-link" id="back-btn">&rarr; العودة للصفحة الرئيسية</a>
+</div>
+
+<script>
+    const content = {
+        ar: {
+            title: "Dentalis | سياسة الخصوصية",
+            langBtn: "English",
+            policyTitle: "سياسة الخصوصية لنظام Dentalis",
+            backBtn: "← العودة للصفحة الرئيسية",
+            html: `
+                <p>تلتزم Dentalis بحماية خصوصية بياناتك وبيانات مرضاك. توضح هذه السياسة أنواع المعلومات التي نقوم بجمعها وكيفية استغلالنا لها.</p>
+                <h2>1. البيانات التي نجمعها</h2>
+                <p>عند استخدامك لبرنامج Dentalis، نقوم بجمع المعلومات الضرورية لتشغيل الخدمة، بما في ذلك: الاسم، البريد الإلكتروني، وبيانات العيادة. بالنسبة للمرضى، يتم تخزين السجلات الطبية بشكل مشفر.</p>
+                <h2>2. كيف نستخدم معلوماتك</h2>
+                <p>نستخدم البيانات لتوفير ميزات إدارة العيادة، وتحسين تجربة المستخدم، وضمان أمن العمليات والمزامنة بين الأجهزة الخاصة بك.</p>
+                <h2>3. مشاركة البيانات</h2>
+                <p>نحن لا نبيع أو نشارك بياناتك مع أطراف ثالثة لأغراض تسويقية. يتم استخدام البيانات فقط ضمن إطار خدمة Dentalis والوظائف التي تطلبها.</p>
+                <h2>4. أمن البيانات</h2>
+                <p>نستخدم تقنيات تشفير متطورة لحماية السجلات الطبية والمعلومات الشخصية، ونحرص على تطبيق معايير الأمان العالمية في خدماتنا السحابية.</p>
+                <h2>5. حقوقك</h2>
+                <p>لك الحق في الوصول إلى بياناتك، تعديلها، أو طلب حذفها في أي وقت عبر إعدادات الحساب أو بالتواصل معنا مباشرة.</p>
+            `
+        },
+        en: {
+            title: "Dentalis | Privacy Policy",
+            langBtn: "العربية",
+            policyTitle: "Privacy Policy for Dentalis",
+            backBtn: "Back to Home →",
+            html: `
+                <p>Dentalis is committed to protecting your privacy and your patients' data. This policy explains what information we collect and how we use it.</p>
+                <h2>1. Data We Collect</h2>
+                <p>When you use the Dentalis software, we collect information necessary to operate the service, including: name, email, and clinic data. For patients, medical records are stored in an encrypted format.</p>
+                <h2>2. How We Use Your Information</h2>
+                <p>We use the data to provide clinic management features, improve the user experience, and ensure the security of operations and synchronization across your devices.</p>
+                <h2>3. Data Sharing</h2>
+                <p>We do not sell or share your data with third parties for marketing purposes. Data is only used within the framework of the Dentalis service and the functions you request.</p>
+                <h2>4. Data Security</h2>
+                <p>We use advanced encryption technologies to protect medical records and personal information, and we ensure the implementation of global security standards in our cloud services.</p>
+                <h2>5. Your Rights</h2>
+                <p>You have the right to access, modify, or request deletion of your data at any time through account settings or by contacting us directly.</p>
+            `
+        }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        updateContent();
+    }
+
+    function updateContent() {
+        const langData = content[currentLang];
+        document.getElementById('main-html').setAttribute('lang', currentLang);
+        document.getElementById('main-html').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        
+        document.getElementById('page-title').innerText = langData.title;
+        document.getElementById('policy-title').innerText = langData.policyTitle;
+        document.getElementById('policy-content').innerHTML = langData.html;
+        document.getElementById('back-btn').innerText = langData.backBtn;
+        document.getElementById('lang-btn').innerText = langData.langBtn;
+    }
+</script>
+
+</body>
+</html>

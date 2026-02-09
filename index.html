@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Dentalis | نظام إدارة العيادات الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --secondary: #5856D6;
+            --bg: #F5F7FA;
+            --text: #1D1D1F;
+            --white: #FFFFFF;
+            --gray: #8E8E93;
+        }
+        [lang="en"] { font-family: 'Inter', sans-serif; }
+        [lang="ar"] { font-family: 'Cairo', sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .lang-switch {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        .hero {
+            padding: 120px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #007AFF 0%, #00C6FF 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .feature-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+        }
+        .feature-card .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .feature-card h3 {
+            color: var(--text);
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        footer {
+            background-color: var(--white);
+            padding: 60px 50px;
+            text-align: center;
+            border-top: 1px solid #EDEDED;
+        }
+        .footer-links {
+            margin-bottom: 30px;
+        }
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 14px;
+        }
+        .btn {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">Dentalis</a>
+    <div class="nav-links">
+        <a href="#features" class="txt-features">المميزات</a>
+        <a href="privacy-policy.html" class="txt-privacy">سياسة الخصوصية</a>
+        <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1 id="hero-title">مستقبل إدارة عيادات الأسنان بين يديك</h1>
+    <p id="hero-desc">Dentalis هو نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.</p>
+    <a href="#features" class="btn" id="hero-btn">اكتشف المزيد</a>
+</section>
+
+<section id="features" class="features">
+    <div class="feature-card">
+        <span class="icon">📁</span>
+        <h3 id="f1-title">إدارة شاملة للمرضى</h3>
+        <p id="f1-desc">سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج.</p>
+    </div>
+    <div class="feature-card">
+        <span class="icon">📅</span>
+        <h3 id="f2-title">جدولة ذكية للمواعيد</h3>
+        <p id="f2-desc">نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات تلقائية للمرضى لضمان الحضور.</p>
+    </div>
+    <div class="feature-card">
+        <span class="icon">💬</span>
+        <h3 id="f3-title">تواصل آمن ومباشر</h3>
+        <p id="f3-desc">دردشة فورية بين الطبيب والمريض لمتابعة حالة العلاج والإجابة على الاستفسارات بشكل خصوصي.</p>
+    </div>
+</section>
+
+<footer>
+    <p id="footer-copy">&copy; 2026 Dentalis. جميع الحقوق محفوظة.</p>
+    <div class="footer-links">
+        <a href="privacy-policy.html" class="txt-privacy">سياسة الخصوصية</a>
+    </div>
+</footer>
+
+<script>
+    const content = {
+        ar: {
+            title: "Dentalis | نظام إدارة العيادات الذكي",
+            heroTitle: "مستقبل إدارة عيادات الأسنان بين يديك",
+            heroDesc: "Dentalis هو نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.",
+            heroBtn: "اكتشف المزيد",
+            features: "المميزات",
+            privacy: "سياسة الخصوصية",
+            f1Title: "إدارة شاملة للمرضى",
+            f1Desc: "سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج.",
+            f2Title: "جدولة ذكية للمواعيد",
+            f2Desc: "نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات تلقائية للمرضى لضمان الحضور.",
+            f3Title: "تواصل آمن ومباشر",
+            f3Desc: "دردشة فورية بين الطبيب والمريض لمتابعة حالة العلاج والإجابة على الاستفسارات بشكل خصوصي.",
+            footerCopy: "© 2026 Dentalis. جميع الحقوق محفوظة.",
+            langBtn: "English"
+        },
+        en: {
+            title: "Dentalis | Smart Clinic Management System",
+            heroTitle: "The Future of Dental Clinic Management",
+            heroDesc: "Dentalis is a smart, integrated system designed specifically for dentists to simplify appointment scheduling, medical records, and patient communication with the highest standards of security and efficiency.",
+            heroBtn: "Discover More",
+            features: "Features",
+            privacy: "Privacy Policy",
+            f1Title: "Comprehensive Patient Management",
+            f1Desc: "Full electronic medical records for every patient, including medical history, X-rays, and treatment plans.",
+            f2Title: "Smart Appointment Scheduling",
+            f2Desc: "Advanced appointment system that reduces waiting time and sends automated notifications to patients.",
+            f3Title: "Secure Direct Communication",
+            f3Desc: "Instant chat between doctor and patient to follow up on treatment status and answer inquiries privately.",
+            footerCopy: "© 2026 Dentalis. All rights reserved.",
+            langBtn: "العربية"
+        }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        updateContent();
+    }
+
+    function updateContent() {
+        const langData = content[currentLang];
+        document.getElementById('main-html').setAttribute('lang', currentLang);
+        document.getElementById('main-html').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        
+        document.getElementById('page-title').innerText = langData.title;
+        document.getElementById('hero-title').innerText = langData.heroTitle;
+        document.getElementById('hero-desc').innerText = langData.heroDesc;
+        document.getElementById('hero-btn').innerText = langData.heroBtn;
+        document.getElementById('f1-title').innerText = langData.f1Title;
+        document.getElementById('f1-desc').innerText = langData.f1Desc;
+        document.getElementById('f2-title').innerText = langData.f2Title;
+        document.getElementById('f2-desc').innerText = langData.f2Desc;
+        document.getElementById('f3-title').innerText = langData.f3Title;
+        document.getElementById('f3-desc').innerText = langData.f3Desc;
+        document.getElementById('footer-copy').innerText = langData.footerCopy;
+        document.getElementById('lang-btn').innerText = langData.langBtn;
+
+        document.querySelectorAll('.txt-features').forEach(el => el.innerText = langData.features);
+        document.querySelectorAll('.txt-privacy').forEach(el => el.innerText = langData.privacy);
+    }
+</script>
+
+</body>
+</html>
