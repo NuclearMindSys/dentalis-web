@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentalis | نجاح تسجيل الدخول</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --success: #34C759;
+            --bg: #F5F7FA;
+            --text: #1D1D1F;
+            --white: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: var(--bg);
+            font-family: 'Cairo', 'Inter', sans-serif;
+            color: var(--text);
+            text-align: center;
+        }
+        .card {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            max-width: 500px;
+            width: 90%;
+        }
+        .icon {
+            font-size: 80px;
+            color: var(--success);
+            margin-bottom: 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+        h1 {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        p {
+            color: #8E8E93;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .btn {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,122,255,0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,122,255,0.4);
+        }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #F0F0F0;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="status-icon" class="loader"></div>
+    <h1 id="title">جاري العودة للتطبيق...</h1>
+    <p id="message">تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن.</p>
+    <a href="javascript:void(0)" onclick="redirectToApp()" class="btn" id="manual-btn">العودة للتطبيق الآن</a>
+    
+    <div style="margin-top: 40px; font-size: 14px; color: #C7C7CC;">
+        إذا لم يتم تحويلك تلقائياً، يرجى الضغط على الزر أعلاه.
+    </div>
+</div>
+
+<script>
+    function getLang() {
+        return window.navigator.language.startsWith('ar') ? 'ar' : 'en';
+    }
+
+    const translations = {
+        ar: {
+            title: "جاري العودة للتطبيق...",
+            message: "تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن.",
+            btn: "العودة للتطبيق الآن",
+            hint: "إذا لم يتم تحويلك تلقائياً، يرجى الضغط على الزر أعلاه.",
+            successTitle: "تم بنجاح!",
+            successMsg: "يمكنك الآن إغلاق هذه النافذة والعودة لاستخدام التطبيق."
+        },
+        en: {
+            title: "Returning to App...",
+            message: "You have signed in successfully. We are now redirecting you back to Dentalis securely.",
+            btn: "Return to App Now",
+            hint: "If you are not redirected automatically, please click the button above.",
+            successTitle: "Success!",
+            successMsg: "You can now safely close this window and return to the app."
+        }
+    };
+
+    function updateUI(isSuccess = false) {
+        const lang = getLang();
+        const t = translations[lang];
+        document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        
+        if (isSuccess) {
+            document.getElementById('status-icon').className = "icon";
+            document.getElementById('status-icon').innerHTML = "✓";
+            document.getElementById('title').innerText = t.successTitle;
+            document.getElementById('message').innerText = t.successMsg;
+        } else {
+            document.getElementById('title').innerText = t.title;
+            document.getElementById('message').innerText = t.message;
+        }
+        document.getElementById('manual-btn').innerText = t.btn;
+    }
+
+    function redirectToApp() {
+        const hash = window.location.hash;
+        if (hash) {
+            const deepLink = "io.supabase.clinic://login-callback" + hash;
+            window.location.href = deepLink;
+            
+            // Show success message after 2 seconds
+            setTimeout(() => {
+                updateUI(true);
+            }, 2000);
+        } else {
+            console.error("No auth fragment found in URL");
+            updateUI(true); // Still show success as it might have already redirected
+        }
+    }
+
+    // Initial check
+    updateUI(false);
+    
+    // Auto-redirect after a short delay
+    setTimeout(redirectToApp, 1000);
+</script>
+
+</body>
+</html>
