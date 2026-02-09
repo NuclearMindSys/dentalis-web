@@ -29,49 +29,93 @@
             background: var(--white);
             padding: 60px 40px;
             border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08); /* ظل أعمق وأكثر نعومة */
             max-width: 500px;
             width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+        }
+        .icon-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
         }
         .icon {
             font-size: 80px;
             color: var(--success);
-            margin-bottom: 30px;
-            animation: scaleIn 0.5s ease-out;
+            z-index: 2;
+            position: relative;
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .icon-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(52, 199, 89, 0.1);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
         h1 {
             color: var(--text);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
         p {
+            color: #636366;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #F2F2F7;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px;
             color: #8E8E93;
-            font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .btn {
             background: var(--primary);
             color: white;
             text-decoration: none;
-            padding: 15px 35px;
-            border-radius: 30px;
+            padding: 16px 40px;
+            border-radius: 35px;
             font-weight: 700;
             display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,122,255,0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0,122,255,0.25);
+            font-size: 16px;
         }
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0,122,255,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(0,122,255,0.35);
+            background: #0062CC;
         }
         .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #F0F0F0;
-            border-top: 5px solid var(--primary);
+            width: 60px;
+            height: 60px;
+            border: 4px solid #E5E5EA;
+            border-top: 4px solid var(--primary);
             border-radius: 50%;
             display: inline-block;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             margin-bottom: 30px;
         }
         @keyframes spin {
@@ -79,21 +123,45 @@
             100% { transform: rotate(360deg); }
         }
         @keyframes scaleIn {
-            0% { transform: scale(0); opacity: 0; }
+            0% { transform: scale(0.5); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 1; }
+            70% { transform: scale(1.3); opacity: 0; }
+            100% { transform: scale(0.95); opacity: 0; }
+        }
+        .footer-logo {
+            margin-top: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #C7C7CC;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <div id="status-icon" class="loader"></div>
+    <div class="icon-container">
+        <div id="status-icon" class="loader"></div>
+        <div id="icon-pulse" style="display:none;" class="icon-bg"></div>
+    </div>
+    
     <h1 id="title">جاري العودة للتطبيق...</h1>
-    <p id="message">تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن.</p>
+    
+    <div class="trust-badge" id="trust-badge">
+        <span id="trust-icon">🔒</span>
+        <span id="trust-text">اتصال آمن وموثق من NuclearMindSys</span>
+    </div>
+
+    <p id="message">تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن لمتابعة عملك.</p>
+    
     <a href="javascript:void(0)" onclick="redirectToApp()" class="btn" id="manual-btn">العودة للتطبيق الآن</a>
     
-    <div style="margin-top: 40px; font-size: 14px; color: #C7C7CC;">
-        إذا لم يتم تحويلك تلقائياً، يرجى الضغط على الزر أعلاه.
+    <div class="footer-logo">
+        NuclearMindSys <span style="color:var(--primary)">•</span> Digital Intelligence
     </div>
 </div>
 
@@ -105,19 +173,19 @@
     const translations = {
         ar: {
             title: "جاري العودة للتطبيق...",
-            message: "تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن.",
+            message: "تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن لمتابعة عملك.",
             btn: "العودة للتطبيق الآن",
-            hint: "إذا لم يتم تحويلك تلقائياً، يرجى الضغط على الزر أعلاه.",
+            trust: "اتصال آمن وموثق من NuclearMindSys",
             successTitle: "تم بنجاح!",
-            successMsg: "يمكنك الآن إغلاق هذه النافذة والعودة لاستخدام التطبيق."
+            successMsg: "تمت مزامنة الجلسة بنجاح. يمكنك الآن إغلاق هذه النافذة بأمان والبدء باستخدام النظام."
         },
         en: {
             title: "Returning to App...",
-            message: "You have signed in successfully. We are now redirecting you back to Dentalis securely.",
+            message: "You have signed in successfully. We are now redirecting you back to Dentalis securely to resume your work.",
             btn: "Return to App Now",
-            hint: "If you are not redirected automatically, please click the button above.",
+            trust: "Secure Connection Verified by NuclearMindSys",
             successTitle: "Success!",
-            successMsg: "You can now safely close this window and return to the app."
+            successMsg: "Session synchronized successfully. You can now safely close this window and start using the system."
         }
     };
 
@@ -129,13 +197,16 @@
         if (isSuccess) {
             document.getElementById('status-icon').className = "icon";
             document.getElementById('status-icon').innerHTML = "✓";
+            document.getElementById('icon-pulse').style.display = "block";
             document.getElementById('title').innerText = t.successTitle;
             document.getElementById('message').innerText = t.successMsg;
+            document.getElementById('trust-icon').innerText = "✅";
         } else {
             document.getElementById('title').innerText = t.title;
             document.getElementById('message').innerText = t.message;
         }
         document.getElementById('manual-btn').innerText = t.btn;
+        document.getElementById('trust-text').innerText = t.trust;
     }
 
     function redirectToApp() {
