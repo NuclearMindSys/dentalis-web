@@ -140,17 +140,24 @@
 
     function redirectToApp() {
         const hash = window.location.hash;
-        if (hash) {
-            const deepLink = "io.supabase.clinic://login-callback" + hash;
+        const search = window.location.search;
+        
+        // التقاط أي معاملات سواء كانت تبدأ بـ ? أو #
+        const params = search || hash;
+        
+        if (params) {
+            // نستخدم البروتوكول المخصص مع المعاملات كاملة
+            const deepLink = "io.supabase.clinic://login-callback/" + params;
+            console.log("Redirecting to:", deepLink);
             window.location.href = deepLink;
             
-            // Show success message after 2 seconds
+            // إظهار رسالة النجاح بعد ثانيتين
             setTimeout(() => {
                 updateUI(true);
             }, 2000);
         } else {
-            console.error("No auth fragment found in URL");
-            updateUI(true); // Still show success as it might have already redirected
+            console.warn("No auth parameters found in URL");
+            updateUI(true); 
         }
     }
 
