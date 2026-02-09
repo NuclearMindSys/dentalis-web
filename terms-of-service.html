@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="main-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Dentalis | شروط الخدمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --bg: #F5F7FA;
+            --text: #1D1D1F;
+            --white: #FFFFFF;
+            --gray: #8E8E93;
+        }
+        [lang="en"] { font-family: 'Inter', sans-serif; }
+        [lang="ar"] { font-family: 'Cairo', sans-serif; }
+
+        body {
+            margin: 0;
+            padding: 50px;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        [dir="ltr"] .lang-switch {
+            left: auto;
+            right: 30px;
+        }
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid #F0F0F0;
+            padding-bottom: 20px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: var(--text);
+            margin-top: 40px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+    
+    <h1 id="tos-title">شروط الخدمة لنظام Dentalis</h1>
+    
+    <div id="tos-content">
+        <p>مرحباً بك في Dentalis. باستخدامك لخدماتنا، فإنك توافق على الالتزام بالشروط التالية:</p>
+
+        <h2>1. وصف الخدمة</h2>
+        <p>Dentalis هو تطبيق لإدارة عيادات الأسنان يوفر أدوات لتنظيم المواعيد، تخزين السجلات الطبية، والتواصل بين الطبيب والمريض. الخدمة مقدمة "كما هي" لتبسيط العمليات الإدارية.</p>
+
+        <h2>2. مسؤولية المستخدم</h2>
+        <p>يتحقق المستخدم (الطبيب/العيادة) من دقة البيانات الطبية المدخلة. يلتزم المستخدم بالحفاظ على سرية بيانات تسجيل الدخول وعدم مشاركتها مع أطراف غير مصرح لها.</p>
+
+        <h2>3. الملكية الفكرية</h2>
+        <p>جميع حقوق الملكية الفكرية الخاصة بالتطبيق، التصاميم، والشفرة البرمجية تعود لـ NuclearMindSys. لا يجوز نسخ أو إعادة توزيع أي جزء من الخدمة بدون إذن كتابي.</p>
+
+        <h2>4. الخصوصية وأمن البيانات</h2>
+        <p>نحن نحرص على حماية البيانات وفقاً لسياسة الخصوصية الخاصة بنا. يتم تشفير البيانات الحساسة لضمان أقصى درجات الأمان.</p>
+
+        <h2>5. حدود المسؤولية</h2>
+        <p>Dentalis هو أداة مساعدة؛ الطبيب هو المسؤول الأول والأخير عن القرارات الطبية والعلاجية. نحن لا نتحقق من صحة التشخيصات الطبية المدخلة من قبل مستخدمي النظام.</p>
+
+        <h2>6. التعديلات</h2>
+        <p>نحتفظ بالحق في تحديث هذه الشروط في أي وقت. استمرار استخدامك للخدمة بعد التحديث يعني موافقتك على الشروط الجديدة.</p>
+    </div>
+
+    <a href="index.html" class="back-link" id="back-btn">&rarr; العودة للصفحة الرئيسية</a>
+</div>
+
+<script>
+    const content = {
+        ar: {
+            title: "Dentalis | شروط الخدمة",
+            langBtn: "English",
+            tosTitle: "شروط الخدمة لنظام Dentalis",
+            backBtn: "← العودة للصفحة الرئيسية",
+            html: `
+                <p>مرحباً بك في Dentalis. باستخدامك لخدماتنا، فإنك توافق على الالتزام بالشروط التالية:</p>
+                <h2>1. وصف الخدمة</h2>
+                <p>Dentalis هو تطبيق لإدارة عيادات الأسنان يوفر أدوات لتنظيم المواعيد، تخزين السجلات الطبية، والتواصل بين الطبيب والمريض.</p>
+                <h2>2. مسؤولية المستخدم</h2>
+                <p>يتحمل المستخدم (الطبيب/العيادة) مسؤولية دقة البيانات الطبية المدخلة والحفاظ على سرية حسابه.</p>
+                <h2>3. الملكية الفكرية</h2>
+                <p>جميع حقوق الملكية الفكرية الخاصة بالتطبيق تعود لـ NuclearMindSys.</p>
+                <h2>4. الخصوصية وأمن البيانات</h2>
+                <p>تتم معالجة البيانات وبمنتهى السرية وفقاً لسياسة الخصوصية المعتمدة لدينا.</p>
+                <h2>5. حدود المسؤولية</h2>
+                <p>Dentalis أداة مساعدة إدارية، ولا تتحمل مسؤولية القرارات الطبية المتخذة من قبل الأطباء.</p>
+                <h2>6. التعديلات</h2>
+                <p>نحتفظ بالحق في تحديث هذه الشروط لضمان جودة وأمان الخدمة.</p>
+            `
+        },
+        en: {
+            title: "Dentalis | Terms of Service",
+            langBtn: "العربية",
+            tosTitle: "Terms of Service for Dentalis",
+            backBtn: "Back to Home →",
+            html: `
+                <p>Welcome to Dentalis. By using our services, you agree to comply with the following terms:</p>
+                <h2>1. Service Description</h2>
+                <p>Dentalis is a clinic management application providing tools for appointments, medical records, and doctor-patient communication.</p>
+                <h2>2. User Responsibility</h2>
+                <p>The user (Doctor/Clinic) is responsible for the accuracy of medical data entered and for maintaining account confidentiality.</p>
+                <h2>3. Intellectual Property</h2>
+                <p>All intellectual property rights related to the application belong to NuclearMindSys.</p>
+                <h2>4. Privacy and Data Security</h2>
+                <p>Data is processed with the utmost confidentiality in accordance with our Privacy Policy.</p>
+                <h2>5. Limitation of Liability</h2>
+                <p>Dentalis is an administrative assistant tool; doctors remain solely responsible for medical and clinical decisions.</p>
+                <h2>6. Amendments</h2>
+                <p>We reserve the right to update these terms to ensure the quality and security of the service.</p>
+            `
+        }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        updateContent();
+    }
+
+    function updateContent() {
+        const langData = content[currentLang];
+        document.getElementById('main-html').setAttribute('lang', currentLang);
+        document.getElementById('main-html').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        
+        document.getElementById('page-title').innerText = langData.title;
+        document.getElementById('tos-title').innerText = langData.tosTitle;
+        document.getElementById('tos-content').innerHTML = langData.html;
+        document.getElementById('back-btn').innerText = langData.backBtn;
+        document.getElementById('lang-btn').innerText = langData.langBtn;
+    }
+</script>
+
+</body>
+</html>

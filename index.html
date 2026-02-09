@@ -146,6 +146,7 @@
     <div class="nav-links">
         <a href="#features" class="txt-features">المميزات</a>
         <a href="privacy-policy.html" class="txt-privacy">سياسة الخصوصية</a>
+        <a href="terms-of-service.html" class="txt-tos">شروط الخدمة</a>
         <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
     </div>
 </header>
@@ -178,6 +179,7 @@
     <p id="footer-copy">&copy; 2026 Dentalis. جميع الحقوق محفوظة.</p>
     <div class="footer-links">
         <a href="privacy-policy.html" class="txt-privacy">سياسة الخصوصية</a>
+        <a href="terms-of-service.html" class="txt-tos">شروط الخدمة</a>
     </div>
 </footer>
 
@@ -190,6 +192,7 @@
             heroBtn: "اكتشف المزيد",
             features: "المميزات",
             privacy: "سياسة الخصوصية",
+            tos: "شروط الخدمة",
             f1Title: "إدارة شاملة للمرضى",
             f1Desc: "سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج.",
             f2Title: "جدولة ذكية للمواعيد",
@@ -206,6 +209,7 @@
             heroBtn: "Discover More",
             features: "Features",
             privacy: "Privacy Policy",
+            tos: "Terms of Service",
             f1Title: "Comprehensive Patient Management",
             f1Desc: "Full electronic medical records for every patient, including medical history, X-rays, and treatment plans.",
             f2Title: "Smart Appointment Scheduling",
@@ -244,6 +248,7 @@
 
         document.querySelectorAll('.txt-features').forEach(el => el.innerText = langData.features);
         document.querySelectorAll('.txt-privacy').forEach(el => el.innerText = langData.privacy);
+        document.querySelectorAll('.txt-tos').forEach(el => el.innerText = langData.tos);
     }
 </script>
 
