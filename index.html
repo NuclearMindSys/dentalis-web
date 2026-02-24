@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" id="main-html">
 <head>
+    <!-- Intercept Supabase password recovery links and redirect to the dedicated page -->
+    <script>
+        if (window.location.hash && window.location.hash.includes('type=recovery')) {
+            window.location.replace('./reset-password.html' + window.location.hash);
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Dentalis | نظام إدارة العيادات الذكي</title>
