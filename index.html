@@ -10,17 +10,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Dentalis | نظام إدارة العيادات الذكي</title>
+    <meta name="description" content="Dentalis هو نظام ذكي متكامل مصمم لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية للتواصل بأعلى معايير الأمان والكفاءة.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dentalis | نظام إدارة العيادات الذكي">
+    <meta property="og:description" content="نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <meta name="google-site-verification" content="v9YTG6998Fc2MBVWPPO-v1rITWrJ8dOBVPcj6SI3eTA" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --primary: #007AFF;
+            --primary-dark: #0056b3;
             --secondary: #5856D6;
-            --bg: #F5F7FA;
-            --text: #1D1D1F;
+            --bg: #F9FAFB;
+            --bg-alt: #FFFFFF;
+            --text: #1d1d1f;
+            --text-light: #515154;
             --white: #FFFFFF;
             --gray: #8E8E93;
+            --border: #E5E5EA;
         }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --bg-alt: #1E1E1E;
+            --text: #F5F5F7;
+            --text-light: #A1A1A6;
+            --white: #1E1E1E;
+            --border: #333336;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         [lang="en"] { font-family: 'Inter', sans-serif; }
         [lang="ar"] { font-family: 'Cairo', sans-serif; }
 
@@ -32,86 +64,187 @@
             line-height: 1.6;
             transition: all 0.3s ease;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---------------- HEADER ---------------- */
         header {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 15px 0;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-logo-img {
+            height: 50px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        [dir="ltr"] .header-logo-img {
+            margin-left: 0;
+            margin-right: 10px;
+        }
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            margin: 0 15px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
         }
         .lang-switch {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
             font-family: inherit;
+            transition: all 0.3s ease;
         }
+        .lang-switch:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,122,255,0.3);
+        }
+
+        /* ---------------- HERO ---------------- */
         .hero {
-            padding: 120px 50px;
+            padding: 140px 20px;
             text-align: center;
             background: linear-gradient(135deg, #007AFF 0%, #00C6FF 100%);
             color: var(--white);
             position: relative;
             overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,122,255,0.15);
         }
         .hero h1 {
-            font-size: clamp(32px, 5vw, 56px);
-            margin-bottom: 20px;
+            font-size: clamp(36px, 6vw, 64px);
+            margin-bottom: 24px;
             font-weight: 800;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
         }
         .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
+            font-size: 1.25rem;
+            max-width: 750px;
             margin: 0 auto 40px;
-            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
         }
-        .features {
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background-color: #f8f9fa;
+        }
+
+        /* ---------------- SECTIONS COMMON ---------------- */
+        .section-padding {
+            padding: 100px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .section-desc {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        /* ---------------- FEATURES ---------------- */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 80px 50px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
         .feature-card {
-            background: var(--white);
-            padding: 40px;
+            background: var(--bg-alt);
+            padding: 50px 40px;
             border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             text-align: center;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .feature-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-10px);
             border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0,122,255,0.08);
         }
-        .feature-card .icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            display: block;
+        .feature-card .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(0,122,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: var(--primary);
         }
         .feature-card h3 {
             color: var(--text);
@@ -119,91 +252,543 @@
             margin-bottom: 15px;
             font-weight: 700;
         }
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ---------------- HOW IT WORKS ---------------- */
+        .how-it-works {
+            background-color: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+        .step-card {
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(0,122,255,0.2);
+        }
+        .step-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        .step-card p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* ---------------- DOWNLOAD CTA ---------------- */
+        .download-section {
+            background: linear-gradient(180deg, var(--bg) 0%, rgba(0,122,255,0.03) 100%);
+            text-align: center;
+        }
+        .store-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .store-btn {
+            display: flex;
+            align-items: center;
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 180px;
+            text-align: left;
+        }
+        [dir="rtl"] .store-btn {
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+        .store-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .store-btn i {
+            font-size: 28px;
+            margin-right: 15px;
+            color: #fff;
+        }
+        [dir="rtl"] .store-btn i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .btn-text small {
+            font-size: 11px;
+            opacity: 0.8;
+            font-family: 'Inter', sans-serif; /* Keep English font for app store buttons */
+            color: #fff;
+        }
+        .btn-text strong {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        /* ---------------- FOOTER ---------------- */
         footer {
             background-color: var(--white);
-            padding: 60px 50px;
-            text-align: center;
-            border-top: 1px solid #EDEDED;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border);
         }
-        .footer-links {
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 25px;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.3s ease;
+        }
+        .footer-logo:hover {
+            filter: grayscale(0) opacity(1);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
             margin-bottom: 30px;
         }
-        .footer-links a {
-            color: var(--gray);
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            margin: 0 20px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-copy {
+            color: var(--gray);
             font-size: 14px;
         }
-        .btn {
-            background-color: var(--white);
+        
+        .digital-id-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            width: 100%;
+        }
+        .digital-id-title {
             color: var(--primary);
-            padding: 14px 35px;
-            border-radius: 50px;
-            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 15px;
             font-weight: 700;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .digital-id-desc {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        .digital-id-meta {
+            font-size: 12px;
+            color: #C7C7CC;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        /* ---------------- THEME BUTTON ---------------- */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* ---------------- FAQ ---------------- */
+        .faq-section {
+            background-color: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            user-select: none;
+        }
+        .faq-icon {
+            font-size: 16px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            padding: 0 25px;
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+        }
+        .faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,122,255,0.05);
+        }
+
+        /* ---------------- ANIMATIONS & UTILS ---------------- */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 100px 20px 80px;
+                border-radius: 0 0 24px 24px;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .store-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="#" class="logo">
-        <img src="logo.png" alt="Dentalis Logo" style="height: 60px; vertical-align: middle; margin-left: 10px;">
-        Dentalis
-    </a>
-    <div class="nav-links">
-        <a href="#features" class="txt-features">المميزات</a>
-        <a href="https://nuclearmindsys.github.io/dentalis-web/privacy-policy.html" class="txt-privacy">سياسة الخصوصية</a>
-        <a href="https://nuclearmindsys.github.io/dentalis-web/terms-of-service.html" class="txt-tos">شروط الخدمة</a>
-        <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+    <div class="container header-container">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Dentalis Logo" class="header-logo-img">
+            Dentalis
+        </a>
+        <div class="nav-links">
+            <a href="#features" class="txt-features" id="nav-features">المميزات</a>
+            <a href="#how-it-works" class="txt-how-works" id="nav-how">كيف يعمل؟</a>
+            <a href="#faq" class="txt-faq" id="nav-faq">الأسئلة الشائعة</a>
+            <a href="#download" class="txt-download" id="nav-download">تحميل</a>
+            <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </button>
+            <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+        </div>
     </div>
 </header>
 
-<section class="hero">
-    <h1 id="hero-title">مستقبل إدارة عيادات الأسنان بين يديك</h1>
-    <p id="hero-desc">Dentalis هو نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.</p>
-    <a href="#features" class="btn" id="hero-btn">اكتشف المزيد</a>
-</section>
-
-<section id="features" class="features">
-    <div class="feature-card">
-        <span class="icon">📁</span>
-        <h3 id="f1-title">إدارة شاملة للمرضى</h3>
-        <p id="f1-desc">سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج.</p>
-    </div>
-    <div class="feature-card">
-        <span class="icon">📅</span>
-        <h3 id="f2-title">جدولة ذكية للمواعيد</h3>
-        <p id="f2-desc">نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات تلقائية للمرضى لضمان الحضور.</p>
-    </div>
-    <div class="feature-card">
-        <span class="icon">💬</span>
-        <h3 id="f3-title">تواصل آمن ومباشر</h3>
-        <p id="f3-desc">دردشة فورية بين الطبيب والمريض لمتابعة حالة العلاج والإجابة على الاستفسارات بشكل خصوصي.</p>
-    </div>
-</section>
-
-<!-- Footer Section Refactored for Center Alignment -->
-<footer style="text-align: center; background-color: #FFFFFF; padding: 60px 20px; border-top: 1px solid #EDEDED; display: block; width: 100%;">
-    <div style="max-width: 1200px; margin: 0 auto; display: block;">
-        <img src="logo.png" alt="Dentalis Logo" style="height: 80px; margin: 0 auto 20px; display: block;">
-        <p id="footer-copy" style="margin: 0 auto 20px; display: block;">&copy; 2026 Dentalis. جميع الحقوق محفوظة.</p>
-        <div id="footer-links" class="footer-links" style="display: block; text-align: center; margin-bottom: 30px;">
-            <a href="https://nuclearmindsys.github.io/dentalis-web/privacy-policy.html" class="txt-privacy" id="privacy-link" style="display: inline-block; margin: 0 15px;">سياسة الخصوصية</a>
-            <a href="https://nuclearmindsys.github.io/dentalis-web/terms-of-service.html" class="txt-tos" id="terms-link" style="display: inline-block; margin: 0 15px;">شروط الخدمة</a>
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1 id="hero-title">مستقبل إدارة عيادات الأسنان بين يديك</h1>
+            <p id="hero-desc">Dentalis هو نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.</p>
+            <a href="#features" class="btn-primary" id="hero-btn">
+                <span>اكتشف المزيد</span>
+                <i class="fas fa-arrow-down" style="padding: 0 5px;" id="hero-btn-icon"></i>
+            </a>
         </div>
-    </div>
-    
-    <!-- قسم الهوية الرقمية العالمية - إضافة جديدة -->
-    <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid #F0F0F0; text-align: center;">
-        <h3 style="color:var(--primary); font-size: 18px; margin-bottom: 20px;" id="digital-id-title">رؤية NuclearMindSys</h3>
-        <p style="max-width: 600px; margin: 0 auto 30px; font-size: 14px; color: #8E8E93; line-height: 1.8;" id="digital-id-desc">
-            نحن نسعى لبناء أنظمة ذكية تجمع بين القوة التقنية والذكاء الرقمي. Dentalis هو مجرد البداية في رحلتنا لتقديم حلول طبية وإدارية رائدة تعتمد على أحدث معايير الأمان العالمية.
-        </p>
-        <div style="font-size: 12px; color: #C7C7CC; letter-spacing: 2px;">
-            EST. 2026 • DIGITAL INTELLIGENCE • GLOBAL STANDARDS
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding">
+        <div class="container">
+            <h2 id="features-title" class="section-title animate-on-scroll">المميزات الرئيسية</h2>
+            <p id="features-subtitle" class="section-desc animate-on-scroll">كل ما تحتاجه لإدارة عيادتك بكفاءة في مكان واحد.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="icon-wrapper"><i class="fas fa-folder-open"></i></div>
+                    <h3 id="f1-title">إدارة شاملة للمرضى</h3>
+                    <p id="f1-desc">سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج المفصلة.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="icon-wrapper"><i class="fas fa-calendar-check"></i></div>
+                    <h3 id="f2-title">جدولة ذكية للمواعيد</h3>
+                    <p id="f2-desc">نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات ورسائل تذكير تلقائية للمرضى لضمان الحضور.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="icon-wrapper"><i class="fas fa-shield-halved"></i></div>
+                    <h3 id="f3-title">أمان ومزامنة سحابية</h3>
+                    <p id="f3-desc">بيانات عيادتك محمية ومتاحة متى شئت مع أحدث تقنيات التشفير والمزامنة الفورية بين جميع أجهزتك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works section-padding">
+        <div class="container">
+            <h2 id="hw-title" class="section-title animate-on-scroll">كيف يعمل Dentalis؟</h2>
+            <p id="hw-desc" class="section-desc animate-on-scroll">ثلاث خطوات بسيطة فقط للبدء في التحول الرقمي لعيادتك.</p>
+            
+            <div class="steps-grid">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3 id="hw-s1-title">سجل عيادتك</h3>
+                    <p id="hw-s1-desc">قم بإنشاء حسابك وإضافة تفاصيل عيادتك والطاقم الطبي والأوقات المتاحة بكل سهولة.</p>
+                </div>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3 id="hw-s2-title">أضف مرضاك</h3>
+                    <p id="hw-s2-desc">استورد أو سجل بيانات مرضاك وابدأ في بناء سجلاتهم الطبية الرقمية التفاعلية.</p>
+                </div>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3 id="hw-s3-title">ابدأ العمل المريح</h3>
+                    <p id="hw-s3-desc">نظم مواعيدك، أضف خطط العلاج الدقيقة، وقم بإدارة عيادتك بسلاسة واحترافية عالية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section-padding">
+        <div class="container faq-container">
+            <h2 id="faq-title" class="section-title animate-on-scroll">الأسئلة الشائعة</h2>
+            <p id="faq-subtitle" class="section-desc animate-on-scroll">إجابات لأكثر الأسئلة التي تهمك حول Dentalis.</p>
+            
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q1">هل التطبيق مجاني؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a1">نعم، تطبيق Dentalis مجاني بالكامل بجميع ميزاته الأساسية لتسهيل إدارة عيادتك دون أي تكاليف.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q2">كيف يتم حماية بيانات العيادة والمرضى؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a2">نحن نطبق أعلى معايير الأمان والخصوصية العالمية لقطاع الرعاية الصحية، بما في ذلك التوافق مع معايير HIPAA و GDPR. نظامنا السحابي (Supabase/PostgreSQL) يُشفّر البيانات أثناء النقل ببروتوكولات (TLS/SSL)، ويحفظها بقاعدة البيانات بتشفير (AES-256). كما نستخدم تقنية الأمان على مستوى السجلات (RLS) والمصادقة المتقدمة (JWT) لضمان أن كل طبيب يمتلك صلاحية الوصول لبيانات عيادته فقط.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q3">هل يعمل على الهواتف والأجهزة اللوحية (iPad)؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a3">التطبيق متاح حالياً لأجهزة الأندرويد، وقريباً سيتم إطلاق نسخ مخصصة للويندوز والويب، ومستقبلاً لأجهزة iOS والآيباد.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q4">هل أحتاج لاتصال دائم بالإنترنت لاستخدام التطبيق؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a4">لا تقلق، التطبيق يعمل بكفاءة عالية وبشكل طبيعي حتى في حال انقطاع الإنترنت! الاتصال بالإنترنت ضروري فقط من أجل إجراء التحديثات الفورية (المزامنة) مع الأجهزة الأخرى (مثل جهاز المساعد) ولحفظ النسخ الاحتياطية سحابياً ريثما يعود الاتصال.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q5">هل يمكنني إضافة أكثر من طبيب أو مساعد في نفس العيادة؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a5">بالتأكيد! النظام مصمم ليدعم العمل الجماعي، حيث يمكنك إضافة حسابات للمساعدين والأطباء الآخرين بصلاحيات مخصصة لكل منهم.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q6">كيف يمكنني الحصول على الدعم الفني إذا واجهت مشكلة؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a6">فريق الدعم الفني لدينا متواجد دائماً لمساعدتك. يمكنك التواصل معنا مباشرة من خلال قنواتنا على الواتساب أو التلغرام، أو عبر البريد الإلكتروني الموجود في أسفل الصفحة، وسيقوم فريقنا بحل أي مشكلة تقنية قد تواجهك بأسرع وقت.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span id="faq-q7">هل أستطيع نقل بيانات مرضاي من نظامي القديم إلى Dentalis؟</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p id="faq-a7">نعم، يمكنك التواصل مع فريق الدعم لدينا وشرح نظامك القديم، وسنقوم بتوفير الأداة المناسبة وشرح كيفية نقل بياناتك وسجلات مرضاك بسهولة لتضمن انتقالاً سلساً لعيادتك دون فقدان أي معلومات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section section-padding">
+        <div class="container">
+            <h2 id="dl-title" class="section-title animate-on-scroll">حمل التطبيق الآن</h2>
+            <p id="dl-desc" class="section-desc animate-on-scroll">انضم لمستقبل طب الأسنان. التطبيق متوفر بنسخته التجريبية على أجهزة أندرويد وآيباد.</p>
+            
+            <div class="store-buttons animate-on-scroll">
+                <a href="#" class="store-btn">
+                    <i class="fab fa-google-play"></i>
+                    <div class="btn-text">
+                        <small>GET IT ON</small>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+                <a href="#" class="store-btn">
+                    <i class="fab fa-apple"></i>
+                    <div class="btn-text">
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content animate-on-scroll">
+        <img src="logo.png" alt="Dentalis Logo" class="footer-logo">
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/DentalisOfficial" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://whatsapp.com/channel/0029VbCgcJhCRs1jeXWm1p35" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/Dentalis_Official" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <!-- a href="#" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a -->
+        </div>
+
+        <div id="footer-links" class="footer-links">
+            <a href="#features" class="txt-features" id="footer-f">المميزات</a>
+            <a href="#how-it-works" class="txt-how-works" id="footer-hw">كيف يعمل؟</a>
+            <a href="#faq" class="txt-faq" id="footer-faq">الأسئلة الشائعة</a>
+            <a href="https://nuclearmindsys.github.io/dentalis-web/privacy-policy.html" class="txt-privacy" id="privacy-link">سياسة الخصوصية</a>
+            <a href="https://nuclearmindsys.github.io/dentalis-web/terms-of-service.html" class="txt-tos" id="terms-link">شروط الخدمة</a>
+            <a href="mailto:support@nuclearmindsys.com" class="txt-contact" id="contact-link">اتصل بنا</a>
+        </div>
+        
+        <p id="footer-copy" class="footer-copy">&copy; 2026 Dentalis. جميع الحقوق محفوظة.</p>
+        
+        <!-- Digital Identity Section -->
+        <div class="digital-id-section">
+            <h3 class="digital-id-title" id="digital-id-title">رؤية NuclearMindSys</h3>
+            <p class="digital-id-desc" id="digital-id-desc">
+                نحن نسعى لبناء أنظمة ذكية تجمع بين القوة التقنية والذكاء الرقمي. Dentalis هو مجرد البداية في رحلتنا لتقديم حلول طبية وإدارية رائدة تعتمد على أحدث معايير الأمان العالمية.
+            </p>
+            <div class="digital-id-meta">
+                EST. 2026 • DIGITAL INTELLIGENCE • GLOBAL STANDARDS
+            </div>
         </div>
     </div>
 </footer>
@@ -212,68 +797,263 @@
     const content = {
         ar: {
             title: "Dentalis | نظام إدارة العيادات الذكي",
+            navFeatures: "المميزات",
+            navHow: "كيف يعمل؟",
+            navDownload: "تحميل",
             heroTitle: "مستقبل إدارة عيادات الأسنان بين يديك",
             heroDesc: "Dentalis هو نظام ذكي متكامل مصمم خصيصاً لأطباء الأسنان لتبسيط إدارة المواعيد، السجلات الطبية، والتواصل مع المرضى بأعلى معايير الأمان والكفاءة.",
             heroBtn: "اكتشف المزيد",
-            features: "المميزات",
+            featuresTitle: "المميزات الرئيسية",
+            featuresSubtitle: "كل ما تحتاجه لإدارة عيادتك بكفاءة في مكان واحد.",
+            f1Title: "إدارة شاملة للمرضى",
+            f1Desc: "سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج المفصلة.",
+            f2Title: "جدولة ذكية للمواعيد",
+            f2Desc: "نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات ورسائل تذكير تلقائية للمرضى لضمان الحضور.",
+            f3Title: "أمان ومزامنة سحابية",
+            f3Desc: "بيانات عيادتك محمية ومتاحة متى شئت مع أحدث تقنيات التشفير والمزامنة الفورية بين جميع أجهزتك.",
+            hwTitle: "كيف يعمل Dentalis؟",
+            hwDesc: "ثلاث خطوات بسيطة فقط للبدء في التحول الرقمي لعيادتك.",
+            hwS1Title: "سجل عيادتك",
+            hwS1Desc: "قم بإنشاء حسابك وإضافة تفاصيل عيادتك والطاقم الطبي والأوقات المتاحة بكل سهولة.",
+            hwS2Title: "أضف مرضاك",
+            hwS2Desc: "استورد أو سجل بيانات مرضاك وابدأ في بناء سجلاتهم الطبية الرقمية التفاعلية.",
+            hwS3Title: "ابدأ العمل المريح",
+            hwS3Desc: "نظم مواعيدك، أضف خطط العلاج الدقيقة، وقم بإدارة عيادتك بسلاسة واحترافية عالية.",
+            navFaq: "الأسئلة الشائعة",
+            faqTitle: "الأسئلة الشائعة",
+            faqSubtitle: "إجابات لأكثر الأسئلة التي تهمك حول Dentalis.",
+            faqQ1: "هل التطبيق مجاني؟",
+            faqA1: "نعم، تطبيق Dentalis مجاني بالكامل بجميع ميزاته الأساسية لتسهيل إدارة عيادتك دون أي تكاليف.",
+            faqQ2: "كيف يتم حماية بيانات العيادة والمرضى؟",
+            faqA2: "نحن نطبق أعلى معايير الأمان والخصوصية العالمية لقطاع الرعاية الصحية، بما في ذلك التوافق مع معايير HIPAA و GDPR. نظامنا السحابي (Supabase/PostgreSQL) يُشفّر البيانات أثناء النقل ببروتوكولات (TLS/SSL)، ويحفظها بقاعدة البيانات بتشفير (AES-256). كما نستخدم تقنية الأمان على مستوى السجلات (RLS) والمصادقة المتقدمة (JWT) لضمان أن كل طبيب يمتلك صلاحية الوصول لبيانات عيادته فقط.",
+            faqQ3: "هل يعمل على الهواتف والأجهزة اللوحية (iPad)؟",
+            faqA3: "التطبيق متاح حالياً لأجهزة الأندرويد، وقريباً سيتم إطلاق نسخ مخصصة للويندوز والويب، ومستقبلاً لأجهزة iOS والآيباد.",
+            faqQ4: "هل أحتاج لاتصال دائم بالإنترنت لاستخدام التطبيق؟",
+            faqA4: "لا تقلق، التطبيق يعمل بكفاءة عالية وبشكل طبيعي حتى في حال انقطاع الإنترنت! الاتصال بالإنترنت ضروري فقط من أجل التحديث الفوري (المزامنة) مع الأجهزة الأخرى وحفظ النسخ الاحتياطية سحابياً ريثما يعود الاتصال.",
+            faqQ5: "هل يمكنني إضافة أكثر من طبيب أو مساعد في نفس العيادة؟",
+            faqA5: "بالتأكيد! النظام مصمم ليدعم العمل الجماعي، حيث يمكنك إضافة حسابات للمساعدين والأطباء بصلاحيات مخصصة لكل منهم.",
+            faqQ6: "كيف يمكنني الحصول على الدعم الفني إذا واجهت مشكلة؟",
+            faqA6: "فريق الدعم الفني لدينا متواجد دائماً لمساعدتك. يمكنك التواصل معنا مباشرة من خلال قنواتنا على الواتساب أو التلغرام.",
+            faqQ7: "هل أستطيع نقل بيانات مرضاي من نظامي القديم إلى Dentalis؟",
+            faqA7: "نعم، يمكنك التواصل مع فريق الدعم لدينا وشرح نظامك القديم، وسنقوم بتوفير الأداة المناسبة وشرح كيفية نقل بياناتك وسجلات مرضاك بسهولة لتضمن انتقالاً سلساً لعيادتك.",
+            dlTitle: "حمل التطبيق الآن",
+            dlDesc: "انضم لمستقبل طب الأسنان. التطبيق متوفر بنسخته التجريبية على أجهزة أندرويد وآيباد.",
             privacy: "سياسة الخصوصية",
             tos: "شروط الخدمة",
-            f1Title: "إدارة شاملة للمرضى",
-            f1Desc: "سجل طبي إلكتروني متكامل لكل مريض، يضم التاريخ المرضي، الصور الإشعاعية، وخطط العلاج.",
-            f2Title: "جدولة ذكية للمواعيد",
-            f2Desc: "نظام تنظيم مواعيد متطور يقلل من الانتظار ويرسل تنبيهات تلقائية للمرضى لضمان الحضور.",
-            f3Title: "تواصل آمن ومباشر",
-            f3Desc: "دردشة فورية بين الطبيب والمريض لمتابعة حالة العلاج والإجابة على الاستفسارات بشكل خصوصي.",
+            contact: "اتصل بنا",
             footerCopy: "© 2026 Dentalis. جميع الحقوق محفوظة.",
-            langBtn: "English"
+            langBtn: "English",
+            digitalIdTitle: "رؤية NuclearMindSys",
+            digitalIdDesc: "نحن نسعى لبناء أنظمة ذكية تجمع بين القوة التقنية والذكاء الرقمي. Dentalis هو مجرد البداية في رحلتنا لتقديم حلول طبية وإدارية رائدة تعتمد على أحدث معايير الأمان العالمية."
         },
         en: {
             title: "Dentalis | Smart Clinic Management System",
-            heroTitle: "The Future of Dental Clinic Management",
-            heroDesc: "Dentalis is a smart, integrated system designed specifically for dentists to simplify appointment scheduling, medical records, and patient communication with the highest standards of security and efficiency.",
+            navFeatures: "Features",
+            navHow: "How it Works",
+            navDownload: "Download",
+            heroTitle: "The Future of Dental Clinics",
+            heroDesc: "Dentalis is a smart, integrated system designed for dentists to simplify appointments, medical records, and patient communication with top security.",
             heroBtn: "Discover More",
-            features: "Features",
+            featuresTitle: "Key Features",
+            featuresSubtitle: "Everything you need to manage your clinic efficiently in one place.",
+            f1Title: "Comprehensive Profiles",
+            f1Desc: "Full electronic medical records for every patient, including medical history, X-rays, and detailed treatment plans.",
+            f2Title: "Smart Scheduling",
+            f2Desc: "Advanced appointment system that reduces waiting time and sends automated notifications to patients.",
+            f3Title: "Secure Cloud Sync",
+            f3Desc: "Your clinic data is protected and available whenever you need it with the latest encryption and real-time sync.",
+            hwTitle: "How Dentalis Works?",
+            hwDesc: "Just three simple steps to start your clinic's digital transformation.",
+            hwS1Title: "Register Clinic",
+            hwS1Desc: "Create your account and add your clinic details, medical staff, and working hours with ease.",
+            hwS2Title: "Add Patients",
+            hwS2Desc: "Import or register your patients' data and start building their interactive digital records.",
+            hwS3Title: "Start Working",
+            hwS3Desc: "Organize appointments, add precise treatment plans, and manage your clinic smoothly and professionally.",
+            navFaq: "FAQ",
+            faqTitle: "Frequently Asked Questions",
+            faqSubtitle: "Answers to your most common questions about Dentalis.",
+            faqQ1: "Is the app free?",
+            faqA1: "Yes, Dentalis is completely free with all its core features to facilitate your clinic management without any costs.",
+            faqQ2: "How do you protect clinic and patient data?",
+            faqA2: "We apply the highest global security and privacy standards for healthcare, including compliance with HIPAA and GDPR. Our cloud infrastructure encrypts data in transit using (TLS/SSL) and at rest with (AES-256). We also use Row Level Security (RLS) and advanced JSON Web Tokens (JWT) authentication to guarantee that each doctor can only access their own clinic’s data.",
+            faqQ3: "Does it work on phones and tablets (iPad)?",
+            faqA3: "The app is currently available for Android devices. Windows and Web versions will be released soon, with iOS support coming in the future.",
+            faqQ4: "Do I need a constant internet connection?",
+            faqA4: "Don't worry, the app works seamlessly even without an internet connection! Internet is only required for real-time synchronization with other devices and to securely backup your data to the cloud once you're back online.",
+            faqQ5: "Can I add multiple doctors or assistants to my clinic?",
+            faqA5: "Absolutely! The system is built for teamwork, allowing you to add separate accounts for assistants and other doctors with precisely tailored permissions.",
+            faqQ6: "How can I get technical support if I face an issue?",
+            faqA6: "Our technical support team is always ready to help. You can contact us directly through our official WhatsApp or Telegram channels anytime.",
+            faqQ7: "Can I migrate my patients' data from my old system to Dentalis?",
+            faqA7: "Yes, you can contact our support team and explain your old system. We will provide the appropriate tool and explain how to easily migrate your data and patient records to ensure a smooth transition.",
+            dlTitle: "Download Now",
+            dlDesc: "Join the future of dentistry. The app is available in beta on Android and iPad devices.",
             privacy: "Privacy Policy",
             tos: "Terms of Service",
-            f1Title: "Comprehensive Patient Management",
-            f1Desc: "Full electronic medical records for every patient, including medical history, X-rays, and treatment plans.",
-            f2Title: "Smart Appointment Scheduling",
-            f2Desc: "Advanced appointment system that reduces waiting time and sends automated notifications to patients.",
-            f3Title: "Secure Direct Communication",
-            f3Desc: "Instant chat between doctor and patient to follow up on treatment status and answer inquiries privately.",
+            contact: "Contact Us",
             footerCopy: "© 2026 Dentalis. All rights reserved.",
-            langBtn: "العربية"
+            langBtn: "العربية",
+            digitalIdTitle: "NuclearMindSys Vision",
+            digitalIdDesc: "We aim to build smart systems combining technical power with digital intelligence. Dentalis is the beginning of our journey to provide cutting-edge solutions."
         }
     };
 
-    let currentLang = 'ar';
+    let currentLang = localStorage.getItem('dentalis_lang') || 'ar';
+    let currentTheme = localStorage.getItem('dentalis_theme') || 'light';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        applyTheme(currentTheme);
+        updateContent();
+        setupIntersectionObserver();
+    });
+
+    function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('dentalis_theme', currentTheme);
+        applyTheme(currentTheme);
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const icon = document.getElementById('theme-icon');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        
+        // Close other open FAQs
+        document.querySelectorAll('.faq-item').forEach(faq => {
+            if(faq !== item && faq.classList.contains('active')) {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').style.maxHeight = null;
+            }
+        });
+
+        item.classList.toggle('active');
+        if (item.classList.contains('active')) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            answer.style.maxHeight = null;
+        }
+    }
 
     function toggleLanguage() {
         currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        localStorage.setItem('dentalis_lang', currentLang);
         updateContent();
     }
 
     function updateContent() {
         const langData = content[currentLang];
-        document.getElementById('main-html').setAttribute('lang', currentLang);
-        document.getElementById('main-html').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        const rootHtml = document.getElementById('main-html');
+        rootHtml.setAttribute('lang', currentLang);
+        rootHtml.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
         
         document.getElementById('page-title').innerText = langData.title;
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if(ogTitle) ogTitle.setAttribute('content', langData.title);
+        
+        // Navigation
+        document.getElementById('nav-features').innerText = langData.navFeatures;
+        document.getElementById('nav-how').innerText = langData.navHow;
+        document.getElementById('nav-faq').innerText = langData.navFaq;
+        document.getElementById('nav-download').innerText = langData.navDownload;
+        document.getElementById('footer-f').innerText = langData.navFeatures;
+        document.getElementById('footer-hw').innerText = langData.navHow;
+        document.getElementById('footer-faq').innerText = langData.navFaq;
+
+        // Hero
         document.getElementById('hero-title').innerText = langData.heroTitle;
         document.getElementById('hero-desc').innerText = langData.heroDesc;
-        document.getElementById('hero-btn').innerText = langData.heroBtn;
+        document.querySelector('#hero-btn span').innerText = langData.heroBtn;
+        
+        // Features
+        document.getElementById('features-title').innerText = langData.featuresTitle;
+        document.getElementById('features-subtitle').innerText = langData.featuresSubtitle;
         document.getElementById('f1-title').innerText = langData.f1Title;
         document.getElementById('f1-desc').innerText = langData.f1Desc;
         document.getElementById('f2-title').innerText = langData.f2Title;
         document.getElementById('f2-desc').innerText = langData.f2Desc;
         document.getElementById('f3-title').innerText = langData.f3Title;
         document.getElementById('f3-desc').innerText = langData.f3Desc;
+
+        // How It Works
+        document.getElementById('hw-title').innerText = langData.hwTitle;
+        document.getElementById('hw-desc').innerText = langData.hwDesc;
+        document.getElementById('hw-s1-title').innerText = langData.hwS1Title;
+        document.getElementById('hw-s1-desc').innerText = langData.hwS1Desc;
+        document.getElementById('hw-s2-title').innerText = langData.hwS2Title;
+        document.getElementById('hw-s2-desc').innerText = langData.hwS2Desc;
+        document.getElementById('hw-s3-title').innerText = langData.hwS3Title;
+        document.getElementById('hw-s3-desc').innerText = langData.hwS3Desc;
+
+        // FAQ
+        document.getElementById('faq-title').innerText = langData.faqTitle;
+        document.getElementById('faq-subtitle').innerText = langData.faqSubtitle;
+        document.getElementById('faq-q1').innerText = langData.faqQ1;
+        document.getElementById('faq-a1').innerText = langData.faqA1;
+        document.getElementById('faq-q2').innerText = langData.faqQ2;
+        document.getElementById('faq-a2').innerText = langData.faqA2;
+        document.getElementById('faq-q3').innerText = langData.faqQ3;
+        document.getElementById('faq-a3').innerText = langData.faqA3;
+        document.getElementById('faq-q4').innerText = langData.faqQ4;
+        document.getElementById('faq-a4').innerText = langData.faqA4;
+        document.getElementById('faq-q5').innerText = langData.faqQ5;
+        document.getElementById('faq-a5').innerText = langData.faqA5;
+        document.getElementById('faq-q6').innerText = langData.faqQ6;
+        document.getElementById('faq-a6').innerText = langData.faqA6;
+        document.getElementById('faq-q7').innerText = langData.faqQ7;
+        document.getElementById('faq-a7').innerText = langData.faqA7;
+
+        // Download
+        document.getElementById('dl-title').innerText = langData.dlTitle;
+        document.getElementById('dl-desc').innerText = langData.dlDesc;
+
+        // Footer
         document.getElementById('footer-copy').innerText = langData.footerCopy;
         document.getElementById('lang-btn').innerText = langData.langBtn;
-
-        document.querySelectorAll('.txt-features').forEach(el => el.innerText = langData.features);
+        document.getElementById('digital-id-title').innerText = langData.digitalIdTitle;
+        document.getElementById('digital-id-desc').innerText = langData.digitalIdDesc;
+        
         document.querySelectorAll('.txt-privacy').forEach(el => el.innerText = langData.privacy);
         document.querySelectorAll('.txt-tos').forEach(el => el.innerText = langData.tos);
+        document.querySelectorAll('.txt-contact').forEach(el => el.innerText = langData.contact);
+    }
+    
+    function setupIntersectionObserver() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Add animation class based on if it's a section, card or just text
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Targeted observe for elements that need animation
+        document.querySelectorAll('.animate-on-scroll, .feature-card, .step-card, .store-buttons').forEach((el, index) => {
+            // Give cards staggered times
+            if(el.classList.contains('feature-card') || el.classList.contains('step-card')) {
+                el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+            }
+            observer.observe(el);
+        });
     }
 </script>
 
