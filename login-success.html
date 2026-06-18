@@ -1,261 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dentalis | نجاح تسجيل الدخول</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Dentalis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #007AFF;
-            --success: #34C759;
-            --bg: #F5F7FA;
-            --text: #1D1D1F;
-            --white: #FFFFFF;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: var(--bg);
-            font-family: 'Cairo', 'Inter', sans-serif;
-            color: var(--text);
-            text-align: center;
-        }
-        .card {
-            background: var(--white);
-            padding: 60px 40px;
-            border-radius: 40px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .app-logo {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 30px;
-            object-fit: contain;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--success));
-        }
-        .icon-container {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .icon {
-            font-size: 80px;
-            color: var(--success);
-            z-index: 2;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .icon-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: rgba(52, 199, 89, 0.1);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            z-index: 1;
-        }
-        h1 {
-            color: var(--text);
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        p {
-            color: #636366;
-            font-size: 17px;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: #F2F2F7;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: #8E8E93;
-            margin-bottom: 30px;
-        }
-        .btn {
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 35px;
-            font-weight: 700;
-            display: inline-block;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px rgba(0,122,255,0.25);
-            font-size: 16px;
-        }
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(0,122,255,0.35);
-            background: #0062CC;
-        }
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 4px solid #E5E5EA;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            display: inline-block;
-            animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            margin-bottom: 30px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes scaleIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
-            70% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
-            100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0; }
-        }
-        .footer-logo {
-            margin-top: 40px;
-            font-weight: 700;
-            font-size: 14px;
-            color: #C7C7CC;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        :root{--primary:#007AFF;--primary-d:#0062CC;--success:#34C759;--bg:#F5F7FA;--text:#1D1D1F;--muted:#636366;--white:#FFFFFF;--err:#FF3B30;--pill:#F2F2F7}
+        @media (prefers-color-scheme: dark){:root{--bg:#0B0B0F;--text:#F2F2F7;--muted:#AEAEB2;--white:#1C1C1E;--pill:#2C2C2E}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{height:100%}
+        body{font-family:'Cairo','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;text-align:center}
+        .card{background:var(--white);color:var(--text);padding:56px 40px 40px;border-radius:40px;box-shadow:0 40px 100px rgba(0,0,0,.08);max-width:480px;width:100%;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+        .card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--success))}
+        .app-logo{width:180px;height:180px;margin-bottom:14px;object-fit:contain;animation:scaleIn .6s cubic-bezier(.175,.885,.32,1.275)}
+        .app-logo.hidden{display:none}
+        .icon-wrap{position:relative;width:108px;height:108px;margin:4px auto 22px;display:flex;align-items:center;justify-content:center}
+        .check{width:108px;height:108px;border-radius:50%;display:none;align-items:center;justify-content:center;animation:scaleIn .5s cubic-bezier(.175,.885,.32,1.275)}
+        .check.ok{background:rgba(52,199,89,.12);color:var(--success)}
+        .check.bad{background:rgba(255,59,48,.12);color:var(--err)}
+        .check svg{width:54px;height:54px}
+        .pulse{position:absolute;inset:0;border-radius:50%;background:rgba(52,199,89,.18);animation:pulse 2s infinite;display:none}
+        .pulse.show{display:block}
+        h1{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+        p{color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:22px;max-width:380px}
+        .trust{display:inline-flex;align-items:center;gap:8px;background:var(--pill);color:var(--muted);padding:9px 18px;border-radius:20px;font-size:13px;margin-bottom:24px}
+        .btn{background:var(--primary);color:#fff;text-decoration:none;padding:15px 38px;border-radius:30px;font-weight:700;font-size:16px;display:inline-block;transition:transform .25s,box-shadow .25s,background .25s;box-shadow:0 15px 35px rgba(0,122,255,.25);cursor:pointer;border:none;font-family:inherit}
+        .btn:hover{transform:translateY(-3px);background:var(--primary-d);box-shadow:0 20px 45px rgba(0,122,255,.35)}
+        .btn:active{transform:translateY(-1px)}
+        .btn.hidden{display:none}
+        .hint{font-size:13px;color:var(--muted);margin-top:14px}
+        .hint.hidden{display:none}
+        .detail{margin-top:6px;font-size:13px;color:var(--err);word-break:break-word;background:rgba(255,59,48,.08);border-radius:12px;padding:10px 14px;max-width:380px}
+        .detail.hidden{display:none}
+        .footer{margin-top:30px;font-weight:700;font-size:12px;color:#C7C7CC;letter-spacing:1px;text-transform:uppercase}
+        .footer b{color:var(--primary)}
+        @keyframes scaleIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+        @keyframes pulse{0%{transform:scale(.9);opacity:.7}70%{transform:scale(1.4);opacity:0}100%{transform:scale(.9);opacity:0}}
+        @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
     </style>
 </head>
 <body>
-
 <div class="card">
-    <img src="logo.png" alt="Dentalis Logo" class="app-logo">
-    <div class="icon-container">
-        <div id="status-icon" class="loader"></div>
-        <div id="icon-pulse" style="display:none;" class="icon-bg"></div>
-    </div>
-    
-    <h1 id="title">جاري العودة للتطبيق...</h1>
-    
-    <div class="trust-badge" id="trust-badge">
-        <span id="trust-icon">🔒</span>
-        <span id="trust-text">اتصال آمن وموثق من NuclearMindSys</span>
-    </div>
-
-    <p id="message">تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن لمتابعة عملك.</p>
-    
-    <a href="javascript:void(0)" onclick="redirectToApp()" class="btn" id="manual-btn">العودة للتطبيق الآن</a>
-    
-    <div class="footer-logo">
-        NuclearMindSys <span style="color:var(--primary)">•</span> Digital Intelligence
-    </div>
+    <img src="logo.png" alt="Dentalis" class="app-logo" onerror="this.classList.add('hidden')">
+    <div class="icon-wrap"><div id="pulse" class="pulse"></div><div id="check" class="check ok"></div></div>
+    <h1 id="title">Dentalis</h1>
+    <div class="trust"><span id="trustIcon">&#128274;</span><span id="trust">NuclearMindSys</span></div>
+    <p id="message">…</p>
+    <div id="detail" class="detail hidden"></div>
+    <button id="btn" class="btn hidden" onclick="onBtn()">…</button>
+    <div id="hint" class="hint hidden">…</div>
+    <div class="footer">NuclearMindSys <b>•</b> Digital Intelligence</div>
 </div>
-
 <script>
-    function getLang() {
-        return window.navigator.language.startsWith('ar') ? 'ar' : 'en';
-    }
-
-    const translations = {
-        ar: {
-            title: "جاري العودة للتطبيق...",
-            message: "تم توثيق دخولك بنجاح. نقوم الآن بإعادتك إلى Dentalis بشكل آمن لمتابعة عملك.",
-            btn: "العودة للتطبيق الآن",
-            trust: "اتصال آمن وموثق من NuclearMindSys",
-            successTitle: "تم بنجاح!",
-            successMsg: "تمت مزامنة الجلسة بنجاح. يمكنك الآن إغلاق هذه النافذة بأمان والبدء باستخدام النظام."
-        },
-        en: {
-            title: "Returning to App...",
-            message: "You have signed in successfully. We are now redirecting you back to Dentalis securely to resume your work.",
-            btn: "Return to App Now",
-            trust: "Secure Connection Verified by NuclearMindSys",
-            successTitle: "Success!",
-            successMsg: "Session synchronized successfully. You can now safely close this window and start using the system."
-        }
-    };
-
-    function updateUI(isSuccess = false) {
-        const lang = getLang();
-        const t = translations[lang];
-        document.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        
-        if (isSuccess) {
-            document.getElementById('status-icon').className = "icon";
-            document.getElementById('status-icon').innerHTML = "✓";
-            document.getElementById('icon-pulse').style.display = "block";
-            document.getElementById('title').innerText = t.successTitle;
-            document.getElementById('message').innerText = t.successMsg;
-            document.getElementById('trust-icon').innerText = "✅";
-        } else {
-            document.getElementById('title').innerText = t.title;
-            document.getElementById('message').innerText = t.message;
-        }
-        document.getElementById('manual-btn').innerText = t.btn;
-        document.getElementById('trust-text').innerText = t.trust;
-    }
-
-    function redirectToApp() {
-        const hash = window.location.hash;
-        const search = window.location.search;
-        
-        // التقاط أي معاملات سواء كانت تبدأ بـ ? أو #
-        const params = search || hash;
-        
-        if (params) {
-            // نستخدم البروتوكول المخصص مع المعاملات كاملة
-            const deepLink = "io.supabase.clinic://login-callback/" + params;
-            console.log("Redirecting to:", deepLink);
-            window.location.href = deepLink;
-            
-            // إظهار رسالة النجاح بعد ثانيتين
-            setTimeout(() => {
-                updateUI(true);
-            }, 2000);
-        } else {
-            console.warn("No auth parameters found in URL");
-            updateUI(true); 
-        }
-    }
-
-    // Initial check
-    updateUI(false);
-    
-    // Auto-redirect after a short delay
-    setTimeout(redirectToApp, 1000);
+var I18N={ar:{successTitle:"تم بنجاح!",successMsg:"تمت مزامنة الجلسة بنجاح. يمكنك إغلاق هذه النافذة والعودة إلى التطبيق.",errorTitle:"تعذّر إكمال الدخول",errorMsg:"حدث خطأ أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى من التطبيق.",returnBtn:"العودة للتطبيق",openApp:"فتح التطبيق",trust:"اتصال آمن وموثّق من NuclearMindSys",closeHint:"يمكنك إغلاق هذه النافذة بأمان الآن.",retryFromApp:"يرجى إعادة المحاولة من التطبيق.",notRedirected:"إذا لم يفتح التطبيق تلقائيًا، اضغط الزر أعلاه."},en:{successTitle:"Success!",successMsg:"Session synchronized successfully. You can close this window and return to the app.",errorTitle:"Login failed",errorMsg:"An error occurred during login. Please try again from the app.",returnBtn:"Return to App",openApp:"Open App",trust:"Secure connection verified by NuclearMindSys",closeHint:"You can safely close this window now.",retryFromApp:"Please retry from the app.",notRedirected:"If the app doesn't open automatically, tap the button above."},ru:{successTitle:"Готово!",successMsg:"Сеанс успешно синхронизирован. Можно закрыть это окно и вернуться в приложение.",errorTitle:"Не удалось войти",errorMsg:"Произошла ошибка при входе. Повторите попытку в приложении.",returnBtn:"Вернуться в приложение",openApp:"Открыть приложение",trust:"Защищённое соединение от NuclearMindSys",closeHint:"Теперь это окно можно закрыть.",retryFromApp:"Повторите попытку из приложения.",notRedirected:"Если приложение не открылось, нажмите кнопку выше."},tr:{successTitle:"Başarılı!",successMsg:"Oturum başarıyla eşitlendi. Bu pencereyi kapatıp uygulamaya dönebilirsiniz.",errorTitle:"Giriş başarısız",errorMsg:"Giriş sırasında bir hata oluştu. Lütfen uygulamadan tekrar deneyin.",returnBtn:"Uygulamaya dön",openApp:"Uygulamayı aç",trust:"NuclearMindSys doğrulamalı güvenli bağlantı",closeHint:"Bu pencereyi güvenle kapatabilirsiniz.",retryFromApp:"Lütfen uygulamadan tekrar deneyin.",notRedirected:"Uygulama otomatik açılmazsa yukarıdaki düğmeye dokunun."},fr:{successTitle:"Réussi !",successMsg:"Session synchronisée avec succès. Vous pouvez fermer cette fenêtre et revenir à l'application.",errorTitle:"Échec de la connexion",errorMsg:"Une erreur s'est produite. Veuillez réessayer depuis l'application.",returnBtn:"Retour à l'application",openApp:"Ouvrir l'application",trust:"Connexion sécurisée vérifiée par NuclearMindSys",closeHint:"Vous pouvez fermer cette fenêtre en toute sécurité.",retryFromApp:"Veuillez réessayer depuis l'application.",notRedirected:"Si l'application ne s'ouvre pas, appuyez sur le bouton ci-dessus."},es:{successTitle:"¡Listo!",successMsg:"Sesión sincronizada con éxito. Ya puede cerrar esta ventana y volver a la aplicación.",errorTitle:"Error de inicio de sesión",errorMsg:"Ocurrió un error durante el inicio de sesión. Inténtelo desde la aplicación.",returnBtn:"Volver a la aplicación",openApp:"Abrir aplicación",trust:"Conexión segura verificada por NuclearMindSys",closeHint:"Ya puede cerrar esta ventana de forma segura.",retryFromApp:"Reintente desde la aplicación.",notRedirected:"Si la aplicación no se abre, pulse el botón superior."},de:{successTitle:"Erfolgreich!",successMsg:"Sitzung erfolgreich synchronisiert. Sie können dieses Fenster schließen und zur App zurückkehren.",errorTitle:"Anmeldung fehlgeschlagen",errorMsg:"Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuchen Sie es in der App erneut.",returnBtn:"Zur App zurückkehren",openApp:"App öffnen",trust:"Sichere Verbindung, verifiziert durch NuclearMindSys",closeHint:"Sie können dieses Fenster nun sicher schließen.",retryFromApp:"Bitte versuchen Sie es aus der App erneut.",notRedirected:"Wenn die App nicht öffnet, tippen Sie auf die Schaltfläche oben."}};
+function getLang(){var l=(navigator.language||"en").toLowerCase();if(l.indexOf("ar")===0)return"ar";if(l.indexOf("ru")===0)return"ru";if(l.indexOf("tr")===0)return"tr";if(l.indexOf("fr")===0)return"fr";if(l.indexOf("es")===0)return"es";if(l.indexOf("de")===0)return"de";return"en";}
+var sp=new URLSearchParams(window.location.search||"");
+var scheme=sp.get("scheme")||"io.supabase.dentalisgo";
+var err=sp.get("error");
+var errDesc=sp.get("error_description");
+sp.delete("scheme");sp.delete("error");sp.delete("error_description");
+var fwd=sp.toString();
+var qs=fwd?("?"+fwd):"";
+var hash=window.location.hash||"";
+var FIRED=false;
+var CONFIG=err?{state:"error",action:"none",errorDetail:errDesc?(err+": "+errDesc):err}:{state:"success",action:"launch",scheme:scheme,deepLink:scheme+"://login-callback"+qs+hash,autoLaunch:true,autoClose:true};
+function el(id){return document.getElementById(id);}
+function apply(){var lang=getLang();var t=I18N[lang]||I18N.en;document.documentElement.lang=lang;document.documentElement.dir=(lang==="ar")?"rtl":"ltr";var ck=el("check"),ps=el("pulse");
+if(CONFIG.state==="error"){el("title").innerText=t.errorTitle;el("message").innerText=t.errorMsg;el("trustIcon").innerText="⚠";ck.style.display="flex";ck.className="check bad";ck.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';ps.classList.remove("show");}else{el("title").innerText=t.successTitle;el("message").innerText=t.successMsg;el("trustIcon").innerText="✔";ck.style.display="flex";ck.className="check ok";ck.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';ps.classList.add("show");}
+el("trust").innerText=t.trust;var btn=el("btn"),hint=el("hint"),detail=el("detail");var label=null,hintText=null;if(CONFIG.state==="success"){if(CONFIG.action==="focus")label=t.returnBtn;else if(CONFIG.action==="launch")label=t.openApp;hintText=(CONFIG.action==="launch")?t.notRedirected:t.closeHint;}else{hintText=t.retryFromApp;}
+if(label){btn.classList.remove("hidden");btn.innerText=label;}else{btn.classList.add("hidden");}
+if(hintText){hint.classList.remove("hidden");hint.innerText=hintText;}else{hint.classList.add("hidden");}
+if(CONFIG.state==="error"&&CONFIG.errorDetail){detail.classList.remove("hidden");detail.innerText=CONFIG.errorDetail;}else{detail.classList.add("hidden");detail.innerText="";}}
+function goDeep(){if(FIRED)return;FIRED=true;try{window.location.replace(CONFIG.deepLink);}catch(e){}}
+function tryFocus(){var s=CONFIG.scheme||"io.supabase.dentalisgo";if(s.indexOf("://")<0)s+="://";try{window.location.href=s;}catch(e){}}
+function onBtn(){if(CONFIG.action==="launch")goDeep();else if(CONFIG.action==="focus")tryFocus();}
+apply();
+if(CONFIG.state==="success"){if(CONFIG.autoLaunch)setTimeout(goDeep,650);if(CONFIG.autoClose)setTimeout(function(){try{window.close();}catch(e){}},4500);}
 </script>
-
 </body>
 </html>
