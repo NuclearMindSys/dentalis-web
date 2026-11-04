@@ -49,6 +49,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <!-- [WEB-PERF 2026-11-04] start the big bundle download immediately —
+       flutter_bootstrap.js would otherwise chain it after its own fetch. -->
+  <link rel="preload" as="script" href="main.dart.js">
 
   <style>
     body {
@@ -123,20 +126,23 @@
       });
     }
     // [WEB 2026-11-04] when a new deployment lands (version.json changed),
-    // reload once so returning users land on the fresh build promptly.
+    // reload ONCE — but only for visitors who already had an older build
+    // (first-ever visitors must never pay an extra reload).
     (function () {
       fetch('version.json', { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (v) {
           if (!v) return;
           var key = 'dentalis-build-' + v.version + '+' + v.build_number;
-          if (!localStorage.getItem(key)) {
-            Object.keys(localStorage).forEach(function (k) {
-              if (k.indexOf('dentalis-build-') === 0) localStorage.removeItem(k);
-            });
-            localStorage.setItem(key, '1');
-            location.reload();
-          }
+          if (localStorage.getItem(key)) return; // already on this build
+          var hadPrevious = Object.keys(localStorage).some(function (k) {
+            return k.indexOf('dentalis-build-') === 0;
+          });
+          Object.keys(localStorage).forEach(function (k) {
+            if (k.indexOf('dentalis-build-') === 0) localStorage.removeItem(k);
+          });
+          localStorage.setItem(key, '1');
+          if (hadPrevious) location.reload();
         })
         .catch(function () {});
     })();
