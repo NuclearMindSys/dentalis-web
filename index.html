@@ -21,6 +21,12 @@
     <link rel="icon" type="image/png" href="logo.png">
     
     <meta name="google-site-verification" content="v9YTG6998Fc2MBVWPPO-v1rITWrJ8dOBVPcj6SI3eTA" />
+    <meta property="og:title" content="Dentalis — مستقبل إدارة عيادات الأسنان">
+    <meta property="og:description" content="نظام ذكي متكامل لإدارة عيادات الأسنان — مواعيد، سجلات طبية، علاجات وتواصل مع المرضى. جرّب نسخة الويب الآن.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://nuclearmindsys.github.io/dentalis-web/">
+    <meta name="twitter:card" content="summary_large_image">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
@@ -585,6 +591,7 @@
             <a href="#features" class="txt-features" id="nav-features">المميزات</a>
             <a href="#how-it-works" class="txt-how-works" id="nav-how">كيف يعمل؟</a>
             <a href="#faq" class="txt-faq" id="nav-faq">الأسئلة الشائعة</a>
+            <a href="app/" id="nav-app">التطبيق · App</a>
             <a href="#download" class="txt-download" id="nav-download">تحميل</a>
             <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon" id="theme-icon"></i>
@@ -602,6 +609,10 @@
             <a href="#features" class="btn-primary" id="hero-btn">
                 <span>اكتشف المزيد</span>
                 <i class="fas fa-arrow-down" style="padding: 0 5px;" id="hero-btn-icon"></i>
+            </a>
+            <a href="app/" class="btn-primary" id="hero-app-btn" style="margin-inline-start: 12px;">
+                <span>افتح التطبيق · Open App</span>
+                <i class="fas fa-globe" style="padding: 0 5px;"></i>
             </a>
         </div>
     </section>
@@ -739,18 +750,18 @@
             <p id="dl-desc" class="section-desc animate-on-scroll">انضم لمستقبل طب الأسنان. التطبيق متوفر بنسخته التجريبية على أجهزة أندرويد وآيباد.</p>
             
             <div class="store-buttons animate-on-scroll">
-                <a href="#" class="store-btn">
+                <a href="app/" class="store-btn" style="border:2px solid var(--primary);">
+                    <i class="fas fa-globe"></i>
+                    <div class="btn-text">
+                        <small>OPEN NOW</small>
+                        <strong>Web App · نسخة الويب</strong>
+                    </div>
+                </a>
+                <a href="https://github.com/NuclearMindSys/dentalis-downloads/releases/latest" target="_blank" rel="noopener" class="store-btn">
                     <i class="fab fa-google-play"></i>
                     <div class="btn-text">
                         <small>GET IT ON</small>
-                        <strong>Google Play</strong>
-                    </div>
-                </a>
-                <a href="#" class="store-btn">
-                    <i class="fab fa-apple"></i>
-                    <div class="btn-text">
-                        <small>Download on the</small>
-                        <strong>App Store</strong>
+                        <strong>Android APK</strong>
                     </div>
                 </a>
             </div>
