@@ -1,0 +1,67 @@
+[
+  {
+    "id": "int_metronidazole_warfarin",
+    "drug1_id": "drug_metronidazole",
+    "drug2_id": "drug_warfarin",
+    "severity": 4,
+    "clinical_effect_en": "Enhanced anticoagulant effect",
+    "clinical_effect_ar": "تأثير محسّن مضاد للتخثر",
+    "recommendation_en": "DO NOT PRESCRIBE metronidazole to patients on warfarin. Use alternative antibiotic.",
+    "recommendation_ar": "لا تصف الميترونيدازول للمرضى الذين يتناولون الوارفارين. استخدم مضاد حيوي بديل.",
+    "mechanism_en": "Inhibition of warfarin metabolism",
+    "mechanism_ar": null,
+    "reference": "SDCEP Page 81, BNF Appendix 1"
+  },
+  {
+    "id": "int_ibuprofen_warfarin",
+    "drug1_id": "drug_ibuprofen",
+    "drug2_id": "drug_warfarin",
+    "severity": 4,
+    "clinical_effect_en": "Increased risk of bleeding (GI hemorrhage)",
+    "clinical_effect_ar": "زيادة خطر النزيف (نزيف الجهاز الهضمي)",
+    "recommendation_en": "DO NOT PRESCRIBE NSAIDs to patients on warfarin. Use paracetamol instead.",
+    "recommendation_ar": "لا تصف مضادات الالتهاب غير الستيرويدية للمرضى الذين يتناولون الوارفارين. استخدم الباراسيتامول بدلاً من ذلك.",
+    "mechanism_en": "Antiplatelet effect + gastric irritation",
+    "mechanism_ar": null,
+    "reference": "SDCEP Page 81"
+  },
+  {
+    "id": "int_fluconazole_warfarin",
+    "drug1_id": "drug_fluconazole",
+    "drug2_id": "drug_warfarin",
+    "severity": 4,
+    "clinical_effect_en": "Significantly enhanced anticoagulant effect",
+    "clinical_effect_ar": "تأثير محسّن جداً مضاد للتخثر",
+    "recommendation_en": "AVOID fluconazole in patients on warfarin. If essential, reduce warfarin dose and monitor INR closely.",
+    "recommendation_ar": "تجنب الفلوكونازول في المرضى الذين يتناولون الوارفارين. إذا كان ضرورياً، قلل جرعة الوارفارين وراقب INR عن كثب.",
+    "mechanism_en": "CYP2C9 inhibition",
+    "mechanism_ar": null,
+    "reference": "SDCEP Page 81"
+  },
+  {
+    "id": "int_clarithromycin_warfarin",
+    "drug1_id": "drug_clarithromycin",
+    "drug2_id": "drug_warfarin",
+    "severity": 3,
+    "clinical_effect_en": "Enhanced anticoagulant effect",
+    "clinical_effect_ar": "تأثير محسّن مضاد للتخثر",
+    "recommendation_en": "Use with caution. Monitor INR more frequently.",
+    "recommendation_ar": "استخدم بحذر. راقب INR بشكل متكرر.",
+    "mechanism_en": "CYP3A4 inhibition",
+    "mechanism_ar": null,
+    "reference": "SDCEP Page 81"
+  },
+  {
+    "id": "int_ibuprofen_aspirin",
+    "drug1_id": "drug_ibuprofen",
+    "drug2_id": "drug_aspirin",
+    "severity": 3,
+    "clinical_effect_en": "Reduced antiplatelet effect of aspirin + increased GI bleeding risk",
+    "clinical_effect_ar": "تقليل تأثير الأسبرين المضاد للصفائح + زيادة خطر نزيف الجهاز الهضمي",
+    "recommendation_en": "Avoid NSAIDs in patients on daily aspirin (≥75mg). Use paracetamol.",
+    "recommendation_ar": "تجنب مضادات الالتهاب غير الستيرويدية في المرضى الذين يتناولون الأسبرين اليومي (≥75 ملغ). استخدم الباراسيتامول.",
+    "mechanism_en": "Competitive COX-1 inhibition",
+    "mechanism_ar": null,
+    "reference": "SDCEP Page 82"
+  }
+]

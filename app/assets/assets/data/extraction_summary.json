@@ -1,0 +1,13 @@
+{
+  "extraction_date": "2025-12-24T14:10:01.779467",
+  "source_pdf": "SDCEP_Drug_Prescribing_3rd_Edition.pdf",
+  "statistics": {
+    "drugs": 10,
+    "formulations": 0,
+    "interactions": 5,
+    "conditions": 5,
+    "regimens": 0,
+    "local_measures": 0,
+    "emergencies": 3
+  }
+}

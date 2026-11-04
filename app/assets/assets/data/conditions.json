@@ -1,0 +1,67 @@
+[
+  {
+    "id": "condition_4_1",
+    "name_en": "Acute Apical Abscess",
+    "name_ar": "الخراج القمعي الحاد",
+    "category": "bacterialInfections",
+    "section_number": 4,
+    "subsection_number": "4.1",
+    "treatment_regimen_ids": null,
+    "related_condition_ids": null,
+    "sdcep_page_reference": "Pages 29-48",
+    "created_at": "2025-12-24T14:10:01.769060",
+    "updated_at": "2025-12-24T14:10:01.769062"
+  },
+  {
+    "id": "condition_4_2",
+    "name_en": "Acute Lateral Periodontal Abscess",
+    "name_ar": "الخراج اللثوي الجانبي",
+    "category": "bacterialInfections",
+    "section_number": 4,
+    "subsection_number": "4.2",
+    "treatment_regimen_ids": null,
+    "related_condition_ids": null,
+    "sdcep_page_reference": "Pages 29-48",
+    "created_at": "2025-12-24T14:10:01.769168",
+    "updated_at": "2025-12-24T14:10:01.769170"
+  },
+  {
+    "id": "condition_4_3",
+    "name_en": "Dental Abscess",
+    "name_ar": "الخراج السني",
+    "category": "bacterialInfections",
+    "section_number": 4,
+    "subsection_number": "4.3",
+    "treatment_regimen_ids": null,
+    "related_condition_ids": null,
+    "sdcep_page_reference": "Pages 29-48",
+    "created_at": "2025-12-24T14:10:01.769273",
+    "updated_at": "2025-12-24T14:10:01.769274"
+  },
+  {
+    "id": "condition_4_4",
+    "name_en": "Necrotising Ulcerative Gingivitis",
+    "name_ar": "التهاب اللثة التقرحي الناخر",
+    "category": "bacterialInfections",
+    "section_number": 4,
+    "subsection_number": "4.4",
+    "treatment_regimen_ids": null,
+    "related_condition_ids": null,
+    "sdcep_page_reference": "Pages 29-48",
+    "created_at": "2025-12-24T14:10:01.769372",
+    "updated_at": "2025-12-24T14:10:01.769374"
+  },
+  {
+    "id": "condition_4_5",
+    "name_en": "Pericoronitis",
+    "name_ar": "التهاب ما حول التاج",
+    "category": "bacterialInfections",
+    "section_number": 4,
+    "subsection_number": "4.5",
+    "treatment_regimen_ids": null,
+    "related_condition_ids": null,
+    "sdcep_page_reference": "Pages 29-48",
+    "created_at": "2025-12-24T14:10:01.769470",
+    "updated_at": "2025-12-24T14:10:01.769472"
+  }
+]

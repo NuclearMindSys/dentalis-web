@@ -1,0 +1,47 @@
+[
+  {
+    "id": "emergency_2_1",
+    "name_en": "Anaphylaxis",
+    "name_ar": "التأناف",
+    "type": "medical_emergency",
+    "key_signs": "Key signs require manual extraction",
+    "symptoms": "Symptoms require manual extraction",
+    "emergency_drug_ids": null,
+    "ambulance_criteria_en": "Call 999 immediately",
+    "ambulance_criteria_ar": "اتصل بـ 999 فوراً",
+    "is_priority": true,
+    "flowchart_url": null,
+    "illustration_url": null,
+    "sdcep_page_reference": "Page 16"
+  },
+  {
+    "id": "emergency_2_2",
+    "name_en": "Acute Asthma",
+    "name_ar": "الربو الحاد",
+    "type": "medical_emergency",
+    "key_signs": "Key signs require manual extraction",
+    "symptoms": "Symptoms require manual extraction",
+    "emergency_drug_ids": null,
+    "ambulance_criteria_en": "Call 999 immediately",
+    "ambulance_criteria_ar": "اتصل بـ 999 فوراً",
+    "is_priority": false,
+    "flowchart_url": null,
+    "illustration_url": null,
+    "sdcep_page_reference": "Page 16"
+  },
+  {
+    "id": "emergency_2_2",
+    "name_en": "Acute Asthma",
+    "name_ar": "الربو الحاد",
+    "type": "medical_emergency",
+    "key_signs": "Key signs require manual extraction",
+    "symptoms": "Symptoms require manual extraction",
+    "emergency_drug_ids": null,
+    "ambulance_criteria_en": "Call 999 immediately",
+    "ambulance_criteria_ar": "اتصل بـ 999 فوراً",
+    "is_priority": false,
+    "flowchart_url": null,
+    "illustration_url": null,
+    "sdcep_page_reference": "Page 17"
+  }
+]
