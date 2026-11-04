@@ -18,10 +18,23 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <meta name="description" content="Dentalis AI — نظام إدارة عيادات الأسنان السحابي المتكامل: مواعيد، مرضى، علاجات، فواتير وتقارير. The cloud clinic-management platform for modern dental practices.">
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#007AFF">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0B0F">
+
+  <!-- Open Graph / Twitter (share previews) -->
+  <meta property="og:title" content="Dentalis AI — نظام إدارة عيادات الأسنان">
+  <meta property="og:description" content="منصة سحابية متكاملة لإدارة عيادات الأسنان — مواعيد ومرضى وعلاجات وفواتير وتقارير.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.png">
+  <meta name="twitter:card" content="summary">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Dentalis Go">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
@@ -33,50 +46,101 @@
   <link rel="manifest" href="manifest.json">
   <meta name="google-signin-client_id" content="2921613478-t7n8su8q6a9r7p3sju4ndktu61i9f03q.apps.googleusercontent.com">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #f8fafc;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #F5F7FA;
+      font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    .loading-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+    @media (prefers-color-scheme: dark) { body { background: #0B0B0F; } }
+    .splash { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .splash img {
+      width: 96px; height: 96px; object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0,122,255,.28));
+      animation: rise .6s cubic-bezier(.175,.885,.32,1.275);
     }
-    .spinner {
-      width: 44px;
-      height: 44px;
-      border: 3.5px solid #e2e8f0;
-      border-top: 3.5px solid #0284c7;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .splash .name { font-size: 22px; font-weight: 700; color: #0B0B0F; letter-spacing: .3px; }
+    .splash .bar { width: 132px; height: 4px; border-radius: 4px; background: #E2E8F0; overflow: hidden; position: relative; }
+    .splash .bar::after {
+      content: ''; position: absolute; inset: 0; width: 40%; border-radius: 4px;
+      background: linear-gradient(90deg, #007AFF, #34C759);
+      animation: slide 1.1s ease-in-out infinite;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .loading-text {
-      font-size: 14px;
-      font-weight: 500;
-      color: #64748b;
-      letter-spacing: 0.5px;
+    .splash .sub { font-size: 12px; color: #64748B; letter-spacing: .4px; }
+    @keyframes rise { from { transform: translateY(10px) scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
+    @keyframes slide { 0% { transform: translateX(-110%); } 100% { transform: translateX(260%); } }
+    @media (prefers-color-scheme: dark) {
+      .splash .name { color: #F2F2F7; }
+      .splash .bar { background: #2C2C2E; }
+      .splash .sub { color: #AEAEB2; }
     }
   </style>
 </head>
 <body>
-  <div class="loading-container" id="loading">
-    <div class="spinner"></div>
-    <div class="loading-text">Loading Dentalis Go...</div>
+  <div class="splash" id="loading">
+    <img src="logo.png" alt="">
+    <div class="name">Dentalis AI</div>
+    <div class="bar"></div>
+    <div class="sub">Loading Dentalis Go…</div>
   </div>
 
+  <script>
+    // [WEB 2026-11-03] hide the splash once Flutter paints its first frame
+    // (engine event + canvas poll cover engine variants; the splash must stay
+    // up during the whole download — it is the app's loading experience).
+    (function () {
+      function hideSplash() {
+        var el = document.getElementById('loading');
+        if (el) { el.style.display = 'none'; }
+      }
+      window.addEventListener('flutter-first-frame', hideSplash);
+      document.addEventListener('flutter-first-frame', hideSplash);
+      var poll = setInterval(function () {
+        var view = document.querySelector('flutter-view');
+        if (view && (view.querySelector('canvas') || (view.shadowRoot && view.shadowRoot.querySelector('canvas')))) {
+          hideSplash();
+          clearInterval(poll);
+        }
+      }, 400);
+    })();
+    // [WEB 2026-11-04] register the app-shell service worker — Flutter
+    // 3.47's own worker is a self-uninstalling stub with no caching.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+        navigator.serviceWorker.addEventListener('message', function (e) {
+          if (e.data === 'dentalis-reload-app') { location.reload(); }
+        });
+      });
+    }
+    // [WEB 2026-11-04] when a new deployment lands (version.json changed),
+    // reload once so returning users land on the fresh build promptly.
+    (function () {
+      fetch('version.json', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (v) {
+          if (!v) return;
+          var key = 'dentalis-build-' + v.version + '+' + v.build_number;
+          if (!localStorage.getItem(key)) {
+            Object.keys(localStorage).forEach(function (k) {
+              if (k.indexOf('dentalis-build-') === 0) localStorage.removeItem(k);
+            });
+            localStorage.setItem(key, '1');
+            location.reload();
+          }
+        })
+        .catch(function () {});
+    })();
+  </script>
   <script type="module">
     import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs';
     globalThis.pdfjsLib = pdfjsLib;
@@ -86,27 +150,6 @@
       cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',
       cMapPacked: true,
     };
-  </script>
-  <script>
-    // [WEB 2026-11-03] remove the loading scaffold once Flutter paints its
-    // first frame — it used to stay visible behind the app forever (the
-    // engine's flutter-first-frame event + a canvas-presence poll cover both
-    // event-name variants across engine versions).
-    (function () {
-      function hideLoading() {
-        var el = document.getElementById('loading');
-        if (el) { el.style.display = 'none'; }
-      }
-      window.addEventListener('flutter-first-frame', hideLoading);
-      document.addEventListener('flutter-first-frame', hideLoading);
-      var poll = setInterval(function () {
-        var view = document.querySelector('flutter-view');
-        if (view && view.querySelector('canvas')) {
-          hideLoading();
-          clearInterval(poll);
-        }
-      }, 400);
-    })();
   </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
