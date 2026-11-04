@@ -92,8 +92,10 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
-  // Never intercept the OAuth/edge-function round-trips.
-  if (!url.pathname.startsWith(self.registration.scope)) return;
+  // Never intercept the OAuth/edge-function round-trips. Scope guard must
+  // compare the FULL request URL against the scope (a pathname can never
+  // start with "https://…" — the old comparison silently skipped caching).
+  if (!req.url.startsWith(self.registration.scope)) return;
 
   if (isNetworkFirst(url)) {
     event.respondWith(networkFirst(req, RUNTIME_CACHE));
