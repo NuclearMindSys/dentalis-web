@@ -50,8 +50,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <!-- [WEB-PERF 2026-11-04] start the big bundle download immediately —
-       flutter_bootstrap.js would otherwise chain it after its own fetch. -->
-  <link rel="preload" as="script" href="main.dart.js">
+       flutter_bootstrap.js would otherwise chain it after its own fetch.
+       On WasmGC browsers the .wasm bundle takes over, so only preload the
+       JS bundle when the engine will actually run it. -->
+  <script>
+    if (!(typeof WebAssembly !== 'undefined' && WebAssembly.gc)) {
+      var pl = document.createElement('link');
+      pl.rel = 'preload'; pl.as = 'script'; pl.href = 'main.dart.js';
+      document.head.appendChild(pl);
+    }
+  </script>
 
   <style>
     body {

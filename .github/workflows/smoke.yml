@@ -1,0 +1,58 @@
+name: Web Smoke Check
+
+# Daily + on-push production health gate for the hosted Dentalis web app.
+# Fails loudly when any core asset, route, or SEO basic breaks.
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # 06:00 UTC daily
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe dentalis-ai.pages.dev (Cloudflare)
+        run: |
+          set -e
+          BASE="https://dentalis-ai.pages.dev"
+          code_root=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/")
+          [ "$code_root" = "200" ] || { echo "root failed: $code_root"; exit 1; }
+          curl -s "$BASE/" | grep -q '<base href="/">' || { echo "base href wrong"; exit 1; }
+          for asset in sw.js manifest.json main.dart.js flutter_bootstrap.js version.json assets/env.production; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/$asset")
+            [ "$code" = "200" ] || { echo "$asset failed: $code"; exit 1; }
+          done
+          curl -s "$BASE/" | grep -q 'name="viewport"' || { echo "viewport meta missing"; exit 1; }
+          curl -s "$BASE/" | grep -q 'Dentalis' || { echo "title/branding missing"; exit 1; }
+          echo "Cloudflare OK"
+
+      - name: Probe github.io mirror + landing
+        run: |
+          set -e
+          BASE="https://nuclearmindsys.github.io/dentalis-web"
+          APP="$BASE/app"
+          code_root=$(curl -s -o /dev/null -w '%{http_code}' "$APP/")
+          [ "$code_root" = "200" ] || { echo "app root failed: $code_root"; exit 1; }
+          curl -s "$APP/" | grep -q '<base href="/dentalis-web/app/">' || { echo "app base href wrong"; exit 1; }
+          for asset in sw.js manifest.json main.dart.js flutter_bootstrap.js assets/env.production; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$APP/$asset")
+            [ "$code" = "200" ] || { echo "app/$asset failed: $code"; exit 1; }
+          done
+          # Landing integration: web-app CTA + legal pages + robots
+          curl -s "$BASE/" | grep -q 'href="app/"' || { echo "landing CTA to app missing"; exit 1; }
+          curl -s "$BASE/" | grep -q 'og:title' || { echo "landing OG tags missing"; exit 1; }
+          for page in terms-of-service.html privacy-policy.html robots.txt; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/$page")
+            [ "$code" = "200" ] || { echo "$page failed: $code"; exit 1; }
+          done
+          echo "GitHub mirror + landing OK"
+
+      - name: Probe auth-callback edge function (web branch)
+        run: |
+          set -e
+          LOC=$(curl -s -o /dev/null -D - "https://tsdfkqlqxuuhiudexmjw.supabase.co/functions/v1/auth-callback?target=https%3A%2F%2Fdentalis-ai.pages.dev&code=SMOKE" | grep -i '^location:' | tr -d '\r')
+          echo "$LOC" | grep -q 'dentalis-ai.pages.dev' || { echo "auth-callback web target broken: $LOC"; exit 1; }
+          echo "auth-callback OK"
