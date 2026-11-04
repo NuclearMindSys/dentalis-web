@@ -1,0 +1,26 @@
+# ==========================================================
+# Dentalis environment (local development)
+# Sanitized 2026-10-17 - removed the unused Web3/wallet/payment
+# block (WEB3AUTH/REOWN/BICONOMY/MOONPAY/TRANSAK/RPC endpoints/
+# contract addresses/wallet addresses/TEST_PRIVATE_KEY/MULTISIG/
+# FCM_SERVER_KEY). Verified: zero code references. NEVER re-add
+# secrets here - this file is bundled into the APK as an asset.
+# ==========================================================
+
+SUPABASE_URL=https://qvkfrjvvuhhmfdxmjvei.supabase.co
+SUPABASE_ANON_KEY=sb_publishable_1tGQdUKgcIcfOx2vMzzcKw_Q6oeAJVs
+GOOGLE_WEB_CLIENT_ID=2921613478-t7n8su8q6a9r7p3sju4ndktu61i9f03q.apps.googleusercontent.com
+GOOGLE_DESKTOP_CLIENT_ID=2921613478-333ihtfhcaudbag4qdao2kksi35gk8tm.apps.googleusercontent.com
+ONESIGNAL_APP_ID=9db98cbb-4724-4ba3-ab03-f738526936b5
+AGORA_APP_ID=ff5fa7295b114458b7a31d7173c90a85
+CLINIC_NAME=Dental Clinic
+CONTACT_EMAIL=info@dentalclinic.com
+REDIRECT_SCHEME=io.supabase.dentalisgo
+SIMULATOR_MODE=false
+DEBUG_MODE=true
+LOG_LEVEL=debug
+ENABLE_NOTIFICATIONS=true
+
+# P4 observability: Sentry ACTIVE since 2026-10-17 (vault-managed DSN.
+# Never committed - this file is gitignored and bundled into dev builds).
+SENTRY_DSN=https://a0e8d436604f2c8d7b200ec46b5b9643@o4512174166704128.ingest.us.sentry.io/4512174183350272
